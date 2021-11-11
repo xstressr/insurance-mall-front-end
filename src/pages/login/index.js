@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Checkbox, Select } from "antd";
+import { Form, Input, Button, Checkbox, Select, Alert, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { LoginWrapper } from "./style";
 import { Layout } from "antd";
 
 import { vipLogin, thirdLogin, adminLogin } from "../../services/login";
+import axios from "axios";
 
 
 const {Option} = Select;
@@ -20,6 +21,7 @@ export default function Login() {
     switch (value) {
       case 'vip':
         console.log("vip")
+        successAlert()
         return;
       case 'third':
         console.log("third")
@@ -32,10 +34,14 @@ export default function Login() {
     }
   };
 
+  const successAlert = () => {
+    return <Alert message="Success Text" type="success" />
+  }
+
   const submit = () => {
     // console.log(form.getFieldInstance("username"))
     // form.setFieldsValue({username: "hhh"})
-    console.log(form.getFieldsValue(["occupationType","username","password"]))
+    // console.log(form.getFieldsValue(["occupationType","username","password"]))
     const {occupationType,username,password} = form.getFieldsValue(["occupationType","username","password"])
     // console.log(username)
     const loginInfo = {
@@ -44,16 +50,46 @@ export default function Login() {
     }
     switch (occupationType) {
       case 'vip':
-        console.log("vip")
-        vipLogin(loginInfo).then(res=>{
-          console.log(res)
+        // console.log("vip")
+        // axios.post("/apis/customer/login",loginInfo).then(res=> {console.log(res)})
+        vipLogin(loginInfo)
+        .then(res=>{
+          // console.log(res)
+          if(res.resultCode) {
+            message.success("Login success")
+          } else {
+            message.error("Login failed")
+
+          }
+        }).catch(err => {
         })
         return;
       case 'third':
-        console.log("third")
+        // console.log("third")
+        thirdLogin(loginInfo)
+        .then(res=>{
+          console.log(res)
+          if(res.resultCode) {
+            message.success("Login success")
+          } else {
+            message.error("Login failed")
+          }
+        }).catch(err => {
+        })
         return;
       case 'admin':
         console.log("admin")
+        adminLogin(loginInfo)
+        .then(res=>{
+          console.log(res)
+          if(res.resultCode) {
+            message.success("Login success")
+          } else {
+            message.error("Login failed")
+
+          }
+        }).catch(err => {
+        })
         return;
       default:
         console.log("null")
