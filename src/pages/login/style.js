@@ -6,6 +6,7 @@ export const LoginWrapper = styled.div `
     flex-direction: row-reverse;
     margin-top: 30px;
     margin-right: 30px;
+    height: 600px
   }
 
   #components-form-demo-normal-login .login-form {
