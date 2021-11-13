@@ -8,6 +8,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 
 import { vipMenu } from "../../common/local-data";
+import { JYFooter } from "../../components/footer";
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -67,6 +68,7 @@ class Vip extends Component {
               </Content>
             </Layout>
           </Layout>
+          <JYFooter />
         </Layout>
       </VipWrapper>
     );

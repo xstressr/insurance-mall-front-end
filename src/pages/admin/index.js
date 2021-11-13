@@ -13,6 +13,7 @@ import {
 import { AdminWrapper } from "./style";
 
 import { AdminMenu } from "../../common/local-data";
+import { JYFooter } from "../../components/footer";
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -41,7 +42,7 @@ class Admin extends Component {
                 defaultOpenKeys={['sub1']}
                 style={{ height: '100%', borderRight: 0 }}
               >
-                <SubMenu key="sub1" icon={<UserOutlined />} title="第三方功能">
+                <SubMenu key="sub1" icon={<UserOutlined />} title="管理员功能">
                   {AdminMenu.map((item,index) => {
                       return (
                         <Menu.Item key={item.link}>
@@ -72,6 +73,7 @@ class Admin extends Component {
               </Content>
             </Layout>
           </Layout>
+          <JYFooter />
         </Layout>
       </AdminWrapper>
     );

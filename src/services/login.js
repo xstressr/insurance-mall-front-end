@@ -2,14 +2,14 @@ import request from './request'
 
 export function vipLogin(loginInfo) {
   return request.post(
-    "/apis/customer/login",
+    "/api/customer/login",
     loginInfo
   )
 }
 
 export function thirdLogin(loginInfo) {
   return request.post(
-    "/apis/third/login",
+    "/api/third/login",
     loginInfo
   )
 }
@@ -17,7 +17,7 @@ export function thirdLogin(loginInfo) {
 
 export function adminLogin(loginInfo) {
   return request.post(
-    "/apis/admin/login",
+    "/api/admin/login",
     loginInfo
   )
 }

@@ -3,9 +3,12 @@ import { Form, Input, Button, Checkbox, Select, Alert, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { LoginWrapper } from "./style";
 import { Layout } from "antd";
+import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 
 import { vipLogin, thirdLogin, adminLogin } from "../../services/login";
 import axios from "axios";
+import { JYFooter } from "../../components/footer";
 
 
 const {Option} = Select;
@@ -16,27 +19,8 @@ export default function Login() {
   const { Header, Footer, Sider, Content } = Layout;
 
   const [form] = Form.useForm();
+  let history = useHistory();
 
-  const onGenderChange = (value) => {
-    switch (value) {
-      case 'vip':
-        console.log("vip")
-        successAlert()
-        return;
-      case 'third':
-        console.log("third")
-        return;
-      case 'admin':
-        console.log("admin")
-        return;
-      default:
-        console.log("object")
-    }
-  };
-
-  const successAlert = () => {
-    return <Alert message="Success Text" type="success" />
-  }
 
   const submit = () => {
     // console.log(form.getFieldInstance("username"))
@@ -57,9 +41,11 @@ export default function Login() {
           // console.log(res)
           if(res.resultCode) {
             message.success("Login success")
+            setTimeout(()=>{
+              history.push("/vip")
+            }, 1500)
           } else {
             message.error("Login failed")
-
           }
         }).catch(err => {
         })
@@ -71,6 +57,9 @@ export default function Login() {
           console.log(res)
           if(res.resultCode) {
             message.success("Login success")
+            setTimeout(()=>{
+              history.push("/seller")
+            }, 1500)
           } else {
             message.error("Login failed")
           }
@@ -84,6 +73,9 @@ export default function Login() {
           console.log(res)
           if(res.resultCode) {
             message.success("Login success")
+            setTimeout(()=>{
+              history.push("/admin")
+            }, 1500)
           } else {
             message.error("Login failed")
 
@@ -100,7 +92,7 @@ export default function Login() {
     <LoginWrapper>
       <Layout>
         <Header>Header</Header>
-        <Content>
+        <Content className="login-content">
             <div className="login-form-root">
               <div>
                 <Form
@@ -114,7 +106,6 @@ export default function Login() {
                   <Form.Item name="occupationType" >
                     <Select
                       placeholder="Select a option and change input text above"
-                      onChange={onGenderChange}
                       allowClear
                     >
                       <Option value="vip">会员</Option>
@@ -167,16 +158,22 @@ export default function Login() {
                       htmlType="submit"
                       className="login-form-button"
                       onClick={submit}
+                      style={{marginRight: "10px"}}
                     >
                       Log in
                     </Button>
-                    Or <a href="">register now!</a>
+                    Or 
+                    <NavLink to={"/register"} style={{marginLeft: "10px"}}>register now!</NavLink>
+                    
                   </Form.Item>
                 </Form>
               </div>
             </div>
         </Content>
-        {/* <Footer>Footer</Footer> */}
+        <JYFooter/>
+        {/* <Footer style={{ textAlign: "center" }}>
+          JOJO保险商城 ©2018 Created by Ant UED
+        </Footer> */}
       </Layout>
     </LoginWrapper>
   )

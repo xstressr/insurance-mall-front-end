@@ -7,6 +7,7 @@ import { VerifiedOutlined, ShopOutlined, SecurityScanOutlined, RedEnvelopeOutlin
 import { HomeWrapper } from './style'
 import astronaut from "@/assets/img/astronaut.jpg"
 import pexels from "@/assets/img/pexels.jpg"
+import { NavLink } from 'react-router-dom';
 
 const contentStyle = {
   height: '300px',
@@ -138,12 +139,12 @@ export default function Home() {
               <div className="content-top-right-header">
                 <a href="/">
                   <Button type="primary" >
-                    <span>登录 / 注册</span>
+                    
+                      <NavLink className="navlink-no-deco" to={"/login"} style={{textDecoration: "none"}}>登录 / 注册</NavLink>
+                      
                   </Button>
                 </a>
-                <Button >
-                  <span>新人福利</span>
-                </Button>
+                
               </div>
 
             </div>

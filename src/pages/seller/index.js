@@ -7,6 +7,7 @@ import {UserOutlined} from "@ant-design/icons"
 
 import { SellerWrapper } from "./style";
 import { sellerMenu } from "../../common/local-data";
+import { JYFooter } from "../../components/footer";
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -66,6 +67,7 @@ class Seller extends Component {
               </Content>
             </Layout>
           </Layout>
+          <JYFooter/>
         </Layout>
       </SellerWrapper>
     );
