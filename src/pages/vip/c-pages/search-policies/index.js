@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { Table, Tag, Space } from 'antd';
 
+import { queryByName } from '../../../../services/slip';
+
 const columns = [
   {
     title: 'Name',
@@ -76,11 +78,24 @@ const data = [
 
 export default function SearchPolicies() {
   const [loginName, setLoginName] = useState("");
+  const [slipList, setSlipList] = useState();
 
   useEffect(() => {
     setLoginName(localStorage.getItem("vip"))
     console.log(loginName)
+  },[loginName])
+
+  useEffect(() => {
+    queryByName(loginName).then((res)=>{
+      console.log(res)
+    })
   })
+
+  function querySlips() {
+    
+
+  }
+
 
   return (
     <div>
