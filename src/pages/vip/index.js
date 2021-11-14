@@ -4,8 +4,13 @@ import { renderRoutes } from "react-router-config";
 
 
 import { VipWrapper } from "./style";
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { Layout, Menu, Breadcrumb, Button } from 'antd';
+import { UserOutlined, 
+  LaptopOutlined, 
+  NotificationOutlined, 
+  AppstoreOutlined,
+  SettingOutlined,
+  ArrowUpOutlined } from '@ant-design/icons';
 
 import { vipMenu } from "../../common/local-data";
 import { JYFooter } from "../../components/footer";
@@ -16,6 +21,8 @@ const { Header, Content, Sider } = Layout;
 
 class Vip extends Component {
 
+ 
+
   render() {
     const {route} = this.props;
     return (
@@ -23,11 +30,18 @@ class Vip extends Component {
         <Layout>
           <Header className="header">
             <div className="logo" />
-            {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-              <Menu.Item key="1">nav 1</Menu.Item>
-              <Menu.Item key="2">nav 2</Menu.Item>
-              <Menu.Item key="3">nav 3</Menu.Item>
-            </Menu> */}
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+              <Menu.Item key="1" icon={<AppstoreOutlined />}>nav 1</Menu.Item>
+              <Menu.Item key="2" icon={<SettingOutlined />}>nav 2</Menu.Item>
+              <Menu.Item key="3" icon={<ArrowUpOutlined />}>
+                <NavLink to={"/login"} >Exit</NavLink>
+              </Menu.Item>
+            </Menu>
+            
+            <Button type="primary">Exit</Button>
+
+            
+            
           </Header>
           <Layout>
             <Sider width={200} className="site-layout-background">

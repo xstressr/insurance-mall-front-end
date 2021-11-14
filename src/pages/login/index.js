@@ -41,6 +41,7 @@ export default function Login() {
           // console.log(res)
           if(res.resultCode) {
             message.success("Login success")
+            localStorage.setItem("vip", username)
             setTimeout(()=>{
               history.push("/vip")
             }, 1500)

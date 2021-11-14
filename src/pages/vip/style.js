@@ -9,11 +9,13 @@ export const VipWrapper = styled.div`
   height: 31px;
   margin: 16px 24px 16px 0;
   background: rgba(255, 255, 255, 0.3);
-  //TODO:背景图像
+  //TODO:背景图像,不做背景图像了
   /* background-image: url("@/assets/img/1.jpeg") ; */
 }
 
- 
+.exit {
+  float: right
+}
 
 .site-layout-background {
   background: #fff;
