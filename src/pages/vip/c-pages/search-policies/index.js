@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Table, Tag, Space } from 'antd';
 
 const columns = [
@@ -75,6 +75,13 @@ const data = [
 ];
 
 export default function SearchPolicies() {
+  const [loginName, setLoginName] = useState("");
+
+  useEffect(() => {
+    setLoginName(localStorage.getItem("vip"))
+    console.log(loginName)
+  })
+
   return (
     <div>
      <h3 style={{marginBottom:"30px"}}>Search Policies</h3>

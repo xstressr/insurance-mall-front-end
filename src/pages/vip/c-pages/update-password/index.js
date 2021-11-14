@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   Form,
   Input,
@@ -14,6 +14,13 @@ import {
 
 export default function UpdatePassword() {
   const [form] = Form.useForm();
+
+  const [loginName, setLoginName] = useState("");
+
+  useEffect(() => {
+    setLoginName(localStorage.getItem("vip"))
+    console.log(loginName)
+  })
 
   const formItemLayout = {
     labelCol: {
