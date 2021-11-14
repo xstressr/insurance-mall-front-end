@@ -10,7 +10,10 @@ import {
   Checkbox,
   Button,
   AutoComplete,
+  message,
 } from "antd";
+
+import { vipUpdatePass } from "../../../../services/login";
 
 export default function UpdatePassword() {
   const [form] = Form.useForm();
@@ -19,8 +22,8 @@ export default function UpdatePassword() {
 
   useEffect(() => {
     setLoginName(localStorage.getItem("vip"))
-    console.log(loginName)
-  })
+    // console.log(loginName)
+  },[loginName])
 
   const formItemLayout = {
     labelCol: {
@@ -45,6 +48,26 @@ export default function UpdatePassword() {
       },
     },
   };
+
+  function updatePass() {
+    // console.log("tes")
+    let password =  form.getFieldValue("password");
+    let updateInfo = {
+      loginName: loginName,
+      loginPassword: password
+    }
+    vipUpdatePass(updateInfo)
+    .then(res=>{
+      console.log(res)
+      if(res.resultCode)
+      {
+        message.success("成功更新密码")
+      }
+    }).catch(err=>{
+
+    })
+  }
+  
 
   return (
     <div>
@@ -92,7 +115,7 @@ export default function UpdatePassword() {
             <Input.Password />
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={updatePass}>
               Update
             </Button>
           </Form.Item>

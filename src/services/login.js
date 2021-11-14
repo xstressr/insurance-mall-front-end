@@ -21,3 +21,10 @@ export function adminLogin(loginInfo) {
     loginInfo
   )
 }
+
+export function vipUpdatePass(updateInfo) {
+  return request.post(
+    "/api/customer/updatePass",
+    updateInfo
+  )
+}

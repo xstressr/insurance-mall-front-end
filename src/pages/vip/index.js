@@ -21,7 +21,10 @@ const { Header, Content, Sider } = Layout;
 
 class Vip extends Component {
 
- 
+  removeLocalStorage() {
+    // console.log("test")
+    localStorage.removeItem("vip")
+  }
 
   render() {
     const {route} = this.props;
@@ -34,14 +37,9 @@ class Vip extends Component {
               <Menu.Item key="1" icon={<AppstoreOutlined />}>nav 1</Menu.Item>
               <Menu.Item key="2" icon={<SettingOutlined />}>nav 2</Menu.Item>
               <Menu.Item key="3" icon={<ArrowUpOutlined />}>
-                <NavLink to={"/login"} >Exit</NavLink>
+                <NavLink to={"/login"} onClick={()=>this.removeLocalStorage()}>Exit</NavLink>
               </Menu.Item>
-            </Menu>
-            
-            <Button type="primary">Exit</Button>
-
-            
-            
+            </Menu>            
           </Header>
           <Layout>
             <Sider width={200} className="site-layout-background">
