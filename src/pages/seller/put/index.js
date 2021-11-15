@@ -13,8 +13,10 @@ import {
   Checkbox,
   Row,
   Col,
+  message
 } from 'antd';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
+import { insertGoods } from '../../../services/goods';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -40,40 +42,106 @@ const normFile = (e) => {
 
 
 export default function Put() {
+  const [form] = Form.useForm();
+
+  const onReset = () => {
+    form.resetFields();
+  };
+
+  function submit() {
+    console.log(form.getFieldValue("upload"))
+    let goodname = form.getFieldValue("goodname")
+    let goodintroduce = form.getFieldValue("goodintroduce")
+    let goodcontent = form.getFieldValue("goodcontent")
+    let goodprice = form.getFieldValue("goodprice")
+    let category = form.getFieldValue("category")
+    console.log(form.getFieldValue("upload"))
+    let imgUrl
+    if(form.getFieldValue("upload")){
+      imgUrl = form.getFieldValue("upload")[0].response.data
+    }
+    
+    
+    let goodInfo = {
+      goodsName: goodname,
+      goodsIntro: goodintroduce,
+      goodsDetailContent: goodcontent,
+      originalPrice: goodprice,
+      sellingPrice: goodprice,
+      goodsCategoryId: category,
+      goodsCoverImg: imgUrl,
+      createUser: localStorage.getItem("seller")
+    }
+    insertGoods(goodInfo).then(res=>{
+      console.log(res)
+      if(res.resultCode) {
+        message.success("添加成功，等待管理员确认")
+      } else {
+        message.error("未添加成功")
+      }
+    })
+
+  }
+
   return (
     <div>
       <Form
       name="validate_other"
+      form={form}
       {...formItemLayout}
-      
-      initialValues={{
-        'input-number': 3,
-        'checkbox-group': ['A', 'B'],
-        rate: 3.5,
-      }}
     >
-      <Form.Item label="Plain Text">
+      <Form.Item label="Plain Text"
+      >
         <span className="ant-form-text">China</span>
       </Form.Item>
       
-      <Form.Item label="Good Name">
-          <Input placeholder="input placeholder" />
+      <Form.Item label="Good Name"
+      name="goodname"
+      hasFeedback 
+      rules={[
+        {
+          required: true,
+          message: 'Please input your good name!',
+          // pattern: new RegExp(/^[1-9]\d*$/, "g"),
+        },
+      ]}>
+          <Input placeholder="input placeholder" allowClear/>
       </Form.Item>
 
-      <Form.Item label="Good Introduce">
-          <Input placeholder="input placeholder" />
+      <Form.Item label="Good Introduce"
+      name="goodintroduce"
+      hasFeedback
+      rules={[
+        {
+          required: true,
+          message: 'Please input your good introduce!',
+        },
+      ]}>
+          <Input placeholder="input placeholder" allowClear/>
       </Form.Item>
-      <Form.Item label="Good content">
-        <TextArea showCount maxLength={200}  />
+      <Form.Item label="Good content"
+      name="goodcontent"
+      hasFeedback
+      rules={[
+        {
+          required: true,
+          message: 'Please input your good content!',
+        },
+      ]}>
+        <TextArea showCount maxLength={200} allowClear />
       </Form.Item>
 
-      <Form.Item label="Good Introduce">
+      <Form.Item label="Good Price"
+      name="goodprice"
+      hasFeedback
+      rules={[{required: true}]}>
         <Input prefix="￥" suffix="RMB" />
+        {/* <InputNumber addonAfter={<Option value="CNY">¥</Option>} /> */}
       </Form.Item>
 
       <Form.Item
-        name="select"
-        label="Select"
+        name="category"
+        label="Category"
         hasFeedback
         rules={[
           {
@@ -95,30 +163,21 @@ export default function Put() {
 
         </Select>
       </Form.Item>
-
-      
-
-      
-      
-
-      
-
-      
-
-      
-
-  
-
-
-
       <Form.Item
         name="upload"
         label="Upload"
         valuePropName="fileList"
         getValueFromEvent={normFile}
-        
+        rules={[
+          {
+            required: true,
+            message: 'Please upload the image to show the insurance!',
+          },
+        ]}
       >
-        <Upload name="logo" action="/upload.do" listType="picture">
+        <Upload name="file" action="http://localhost:8081/api/testUpload" 
+          listType="picture"
+          >
           <Button icon={<UploadOutlined />}>Click to upload</Button>
         </Upload>
       </Form.Item>
@@ -131,8 +190,11 @@ export default function Put() {
           offset: 6,
         }}
       >
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" onClick={submit} style={{marginRight: "8px"}}>
           Submit
+        </Button>
+        <Button htmlType="button" onClick={onReset}>
+          Reset
         </Button>
       </Form.Item>
     </Form>
