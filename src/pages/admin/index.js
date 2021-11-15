@@ -9,7 +9,11 @@ import {
   UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
+  AppstoreOutlined,
+  SettingOutlined,
+  ArrowUpOutlined 
 } from "@ant-design/icons";
+
 import { AdminWrapper } from "./style";
 
 import { AdminMenu } from "../../common/local-data";
@@ -19,6 +23,11 @@ const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 class Admin extends Component {
+
+  removeLocalStorage() {
+    // console.log("test")
+    localStorage.removeItem("admin")
+  }
   
   render() {
     const {route} = this.props;
@@ -26,13 +35,15 @@ class Admin extends Component {
     return (
       <AdminWrapper>
         <Layout>
-          <Header className="header">
+        <Header className="header">
             <div className="logo" />
-            {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-              <Menu.Item key="1">nav 1</Menu.Item>
-              <Menu.Item key="2">nav 2</Menu.Item>
-              <Menu.Item key="3">nav 3</Menu.Item>
-            </Menu> */}
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+              <Menu.Item key="1" icon={<AppstoreOutlined />}>nav 1</Menu.Item>
+              <Menu.Item key="2" icon={<SettingOutlined />}>nav 2</Menu.Item>
+              <Menu.Item key="3" icon={<ArrowUpOutlined />}>
+                <NavLink to={"/login"} onClick={()=>this.removeLocalStorage()}>Exit</NavLink>
+              </Menu.Item>
+            </Menu>            
           </Header>
           <Layout>
             <Sider width={200} className="site-layout-background">

@@ -58,6 +58,7 @@ export default function Login() {
           console.log(res)
           if(res.resultCode) {
             message.success("Login success")
+            localStorage.setItem("seller", username)
             setTimeout(()=>{
               history.push("/seller")
             }, 1500)
@@ -74,6 +75,7 @@ export default function Login() {
           console.log(res)
           if(res.resultCode) {
             message.success("Login success")
+            localStorage.setItem("admin", username)
             setTimeout(()=>{
               history.push("/admin")
             }, 1500)
