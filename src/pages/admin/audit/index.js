@@ -1,84 +1,106 @@
+import React, {useState, useEffect} from 'react'
+import { Table, Tag, Space, Button } from 'antd';
+import { queryAllGoods, changeStatus } from '../../../services/goods';
 
-import React from 'react'
-import { Table, Tag, Space } from 'antd';
+const category = {
+  1: "重疾险",
+  2: "医疗险",
+  3: "意外险",
+  4: "财富险",
+  5: "旅游线",
+  6: "定期寿险",
+  7: "责任险",
+  8: "家财险",
+}
+
+const status = {
+  0: "待审核",
+  1: "已上架",
+  2: "已下架",
+  
+}
 
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
+    title: '保险公司',
+    dataIndex: 'createUser',
+    key: 'company',
+  },
+  {
+    title: '保险商品',
+    dataIndex: 'goodsName',
     key: 'name',
-    render: text => <a>{text}</a>,
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: '保险种类',
+    dataIndex: 'goodsCategoryId',
+    key: 'category',
+    render: (test) => {
+      return (
+        <Space size="middle">
+          <a>{category[test]}</a>
+        </Space>
+      )
+    }
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: tags => (
-      <>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
+    title: '保险图片',
+    dataIndex: 'goodsCoverImg',
+    key: 'img',
+    render: (img) => (
+      <Space size="middle">
+        <a href={img}>图片</a>
+      </Space>
     ),
+  },
+  {
+    title: '保险状态',
+    dataIndex: 'goodsSellStatus',
+    key: 'status',
+    render: (status1) => {
+      return (
+        <Space size="middle">
+          <Tag color={status1 == 1 ? "magenta" : status1 == 2 ? "green": "cyan"}>
+            {status[status1]}
+          </Tag>
+        </Space>
+      )
+    }
   },
   {
     title: 'Action',
     key: 'action',
     render: (text, record) => (
       <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
+        <Button type="primary"  
+        disabled={record.goodsSellStatus == 1 ? true : false}
+        onClick={()=>onProduct(record.goodsName)}>同意上架</Button>
       </Space>
     ),
   },
 ];
 
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
+function onProduct(goodsName) {
+  changeStatus(goodsName, 1).then(res => {
+    console.log(res)
+  })
+}
+
 
 export default function Audit() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    // let name = localStorage.getItem("seller")
+    queryAllGoods().then(res=>{
+      console.log(res);
+      setData(res.data)
+    })
+  }, [])
+
   return (
     <div>
-     <h3 style={{marginBottom:"30px"}}>New Products Audit</h3>
+     <h3 style={{marginBottom:"30px"}}>Products OnBoard</h3>
      <Table columns={columns} dataSource={data} />
     </div>
   )

@@ -46,7 +46,7 @@ class Seller extends Component {
                 mode="inline"
                 defaultSelectedKeys={['1']}
                 defaultOpenKeys={['sub1']}
-                style={{ height: '100%', borderRight: 0 }}
+                style={{  borderRight: 0 }}
               >
                 <SubMenu key="sub1" icon={<UserOutlined />} title="第三方功能">
                   {sellerMenu.map((item,index) => {
@@ -72,7 +72,7 @@ class Seller extends Component {
                 style={{
                   padding: 24,
                   margin: 0,
-                  minHeight: 600,
+                  
                 }}
               >
                 {renderRoutes(route.routes)}

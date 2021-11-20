@@ -41,3 +41,8 @@ img {
   vertical-align: middle;
 }
 
+
+.ant-layout.ant-layout-has-sider {
+  flex-direction: row;
+  height: 100vh;
+}
