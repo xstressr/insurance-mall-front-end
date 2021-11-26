@@ -1,13 +1,12 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import { Carousel, Tabs, Button, Divider } from 'antd';
 import { VerifiedOutlined, ShopOutlined, SecurityScanOutlined, RedEnvelopeOutlined } from '@ant-design/icons'
-
-
 import { HomeWrapper } from './style'
 import astronaut from "@/assets/img/astronaut.jpg"
 import pexels from "@/assets/img/pexels.jpg"
 import { NavLink } from 'react-router-dom';
+import { queryAllGoods } from '../../services/goods';
 
 const contentStyle = {
   height: '300px',
@@ -21,6 +20,27 @@ const contentStyle = {
 
 export default function Home() {
   const { TabPane } = Tabs;
+
+  const [data, setData] = useState([])
+  const [accident, setAccident] = useState([])
+  const [wealth, setWealth] = useState([])
+  const [travel, setTravel] = useState([])
+
+  useEffect(() => {
+    queryAllGoods().then(res=>{
+      console.log(res)
+      setData(res.data)
+      
+      const acc =  res.data.filter(word => word.goodsCategoryId == 3)
+      const wea =  res.data.filter(word => word.goodsCategoryId == 8)
+      const tra =  res.data.filter(word => word.goodsCategoryId == 5)
+
+      setAccident(acc);
+      setWealth(wea);
+      setTravel(tra);
+    })
+  }, [])
+
   return (
     <HomeWrapper>
       <div className="header">
