@@ -168,7 +168,6 @@ export default function AuditClaim() {
   }
 
   function Status(guaranteeNo, resolver, status) {
-
     let params = {
       guaranteeNo: guaranteeNo,
       resolver: resolver,
@@ -177,12 +176,6 @@ export default function AuditClaim() {
     changeStatus(params).then(res=>{console.log(res)})
     refreshData()
   }
-
-
-
-
-
-
 
   return (
     <div>

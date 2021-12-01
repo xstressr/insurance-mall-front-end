@@ -24,6 +24,7 @@ import { Link, NavLink } from "react-router-dom";
 import { queryAllGoods } from "../../services/goods";
 import { JYFooter } from "../../components/footer";
 import { queryAll } from "../../services/topline";
+import { queryAllCarousel } from "../../services/carousel";
 
 const { Panel } = Collapse;
 
@@ -53,6 +54,7 @@ export default function Home() {
   const [wealth, setWealth] = useState([]);
   const [travel, setTravel] = useState([]);
   const [topline, setTopline] = useState([]);
+  const [carousel, setCarousel] = useState([])
 
   useEffect(() => {
     queryAllGoods().then((res) => {
@@ -75,6 +77,14 @@ export default function Home() {
       setTopline(res.data);
     });
   }, []);
+
+  useEffect(() => {
+    queryAllCarousel().then(res=>{
+      console.log(res)
+      setCarousel(res.data)
+    })
+    
+  }, [])
 
   return (
     <HomeWrapper>
@@ -136,16 +146,15 @@ export default function Home() {
       </div>
       <div className="carousel">
         <Carousel autoplay>
-          <div>
+         {carousel.map((item)=>{
+           return (
+            <div>
             <h3 style={contentStyle}>
-              <img src={astronaut} alt="轮播图1"></img>
+              <img src={item.imgurl} alt="轮播图1"></img>
             </h3>
           </div>
-          <div>
-            <h3 style={contentStyle}>
-              <img src={pexels} alt="轮播图2"></img>
-            </h3>
-          </div>
+           )
+         })}
         </Carousel>
       </div>
 
@@ -160,7 +169,8 @@ export default function Home() {
                     {accident.map((item, index) => {
                       return (
                         <React.Fragment>
-                          <Col offset={index != 0 ? 1 : 0}>
+                          <Col offset={index % 3 != 0 ? 1 : 0}
+                          style={{ marginBottom: "20px" }}>
                             <Card style={{ width: 250 }}>
                               <p><Link to= {`/app/product?productCode=${item.goodsName}`}>{item.goodsName}</Link></p>
                             </Card>
@@ -176,7 +186,8 @@ export default function Home() {
                     {wealth.map((item, index) => {
                       return (
                         <React.Fragment>
-                          <Col offset={index != 0 ? 1 : 0}>
+                          <Col offset={index % 3 != 0 ? 1 : 0}
+                          style={{ marginBottom: "20px" }}>
                             <Card style={{ width: 250 }}>
                             <p><Link to= {`/app/product?productCode=${item.goodsName}`}>{item.goodsName}</Link></p>
                             </Card>
@@ -191,7 +202,8 @@ export default function Home() {
                     {travel.map((item, index) => {
                       return (
                         <React.Fragment>
-                          <Col offset={index != 0 ? 1 : 0}>
+                          <Col offset={index % 3 != 0 ? 1 : 0}
+                          style={{ marginBottom: "20px" }}>
                             <Card style={{ width: 250 }}>
                             <p><Link to= {`/app/product?productCode=${item.goodsName}`}>{item.goodsName}</Link></p>
                             </Card>
