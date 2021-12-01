@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CommonQuestions() {
   return (
-    <div>
+    <div style={{margin:"10px"}}>
       <div className="detail-pane pt30 pb30">
                     <div className="detail-product-faq pr30">
                         <dl className="detail-product-faq-list ml30">

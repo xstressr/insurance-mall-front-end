@@ -11,7 +11,7 @@ export const AdminWrapper = styled.div`
   /* background-image: url("@/assets/img/1.jpeg") ; */
   }
 
-  
+  height: 100vh;
 
   .site-layout-background {
     background: #fff;

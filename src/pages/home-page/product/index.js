@@ -47,50 +47,40 @@ export default function Product(props) {
         <Content>
           <div className="item">
             <div className="item-title">
-              <h1>{detail.goodsName}</h1>
-              <Image width={200} src={detail.goodsCoverImg} />
-              <div>
-                <h4>{detail.goodsIntro}</h4>
-                <p>{detail.goodsDetailContent}</p>
-              </div>
-              <div>
+              
+              <div style={{paddingTop:"30px"}}>
                 <Descriptions
                   bordered
-                  title="Custom Size"
-                  extra={<Button type="primary">Edit</Button>}
+                  title="Good Detail"
+                  extra={<Button
+                    type="primary"
+                    onClick={() => {
+                      history.push(`/app/insured?productCode=${productName}`);
+                    }}
+                  >
+                    投保
+                  </Button>}
                 >
                   <Descriptions.Item label="Product">
-                    Cloud Database
+                  {detail.goodsName}
                   </Descriptions.Item>
                   <Descriptions.Item label="Billing">Prepaid</Descriptions.Item>
-                  <Descriptions.Item label="time">18:00:00</Descriptions.Item>
-                  <Descriptions.Item label="Amount">$80.00</Descriptions.Item>
-                  <Descriptions.Item label="Discount">$20.00</Descriptions.Item>
-                  <Descriptions.Item label="Official">$60.00</Descriptions.Item>
-                  <Descriptions.Item label="Config Info">
-                    Data disk type: MongoDB
+                  <Descriptions.Item label="time">{detail.createTime}</Descriptions.Item>
+                  <Descriptions.Item label="Amount">{"¥"+detail.sellingPrice}</Descriptions.Item>
+                  <Descriptions.Item label="Product Image"><Image width={200} src={detail.goodsCoverImg} /></Descriptions.Item>
+                  <Descriptions.Item ></Descriptions.Item>
+                  <Descriptions.Item label="Good Info">
+                  {detail.goodsIntro}
                     <br />
-                    Database version: 3.4
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Good Content">
+                  {detail.goodsDetailContent}
                     <br />
-                    Package: dds.mongo.mid
-                    <br />
-                    Storage space: 10 GB
-                    <br />
-                    Replication factor: 3
-                    <br />
-                    Region: East China 1<br />
                   </Descriptions.Item>
                 </Descriptions>
               </div>
               <div>
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    history.push(`/app/insured?productCode=${productName}`);
-                  }}
-                >
-                  投保
-                </Button>
+                
               </div>
             </div>
           </div>
