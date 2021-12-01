@@ -55,7 +55,7 @@ export default function Claim() {
     console.log("test");
     const no = form.getFieldValue("no");
     const time = form.getFieldValue("time");
-    const location = form.getFieldValue("time");
+    const location = form.getFieldValue("location");
     const desc = form.getFieldValue("desc");
     let claimInfo = {
       guaranteeNo: no,
@@ -65,7 +65,11 @@ export default function Claim() {
       submitter: localStorage.getItem("vip"),
     };
     insertClaim(claimInfo).then((res) => {
-      console.log(res);
+      // console.log(res);
+      if(res.resultCode)
+      {
+        message.success("报案成功")
+      }
     });
   }
 

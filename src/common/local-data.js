@@ -10,7 +10,7 @@ export const vipMenu = [
     link: "/vip/claim"
   },
   {
-    title: "查询理赔",
+    title: "查询理赔状态",
     link: "/vip/searchClaim"
   },
   {
