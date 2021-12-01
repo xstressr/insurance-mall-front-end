@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Checkbox, Select, Alert, message } from "antd";
+import { Form, Input, Button, Checkbox, Select, Alert, message, Menu } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { LoginWrapper } from "./style";
 import { Layout } from "antd";
@@ -94,7 +94,14 @@ export default function Login() {
   return (
     <LoginWrapper>
       <Layout>
-        <Header>Header</Header>
+        <Header>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["shop"]}>
+            <Menu.Item key="shop">{"JOJO商城"}</Menu.Item>
+            <Menu.Item key="exit">
+            <NavLink to={"/"} >Exit</NavLink>
+            </Menu.Item>
+            
+          </Menu></Header>
         <Content className="login-content">
             <div className="login-form-root">
               <div>

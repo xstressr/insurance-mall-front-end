@@ -12,12 +12,44 @@ import Off from "../pages/seller/off";
 import SearchProducts from "../pages/seller/search-products";
 import Audit from "../pages/admin/audit";
 import InfoPublish from "../pages/admin/info-publish";
+import Product from "../pages/home-page/product";
+import ClaimInfo from "../components/claim-info";
+import CommonQuestions from "../components/common-questions";
+import ProductNavi from "../components/navigation";
+import KnowClaim from "../components/know-claim";
+import Insured from "../pages/home-page/insured";
 
 const routes = [
   {
     path: "/",
     exact: true,
-    component: Home
+    component: Home,
+  },
+  {
+    path: "/app/product",
+    component: Product,
+    routes: [
+      {
+        path: "/app/product/detail",
+        component: ClaimInfo
+      },
+      {
+        path: "/app/product/know",
+        component: KnowClaim
+      },
+      {
+        path: "/app/product/navi",
+        component: ProductNavi
+      },
+      {
+        path: "/app/product/question",
+        component: CommonQuestions
+      }
+    ]
+  },
+  {
+    path: "/app/insured",
+    component: Insured
   },
   {
     path: "/login",

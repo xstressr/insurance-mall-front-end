@@ -26,6 +26,10 @@ class Vip extends Component {
     localStorage.removeItem("vip")
   }
 
+  redirectToHome() {
+    this.props.history.push('/')
+  }
+
   render() {
     const {route} = this.props;
     return (
@@ -34,10 +38,14 @@ class Vip extends Component {
           <Header className="header">
             <div className="logo" />
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-              <Menu.Item key="1" icon={<AppstoreOutlined />}>nav 1</Menu.Item>
+              <Menu.Item key="1" icon={<AppstoreOutlined />}>
+              <NavLink to={"/"} >Home</NavLink>
+              </Menu.Item>
               <Menu.Item key="2" icon={<SettingOutlined />}>nav 2</Menu.Item>
-              <Menu.Item key="3" icon={<ArrowUpOutlined />}>
-                <NavLink to={"/login"} onClick={()=>this.removeLocalStorage()}>Exit</NavLink>
+              <Menu.Item key="3" icon={<ArrowUpOutlined />} >
+              <NavLink to={"/"} onClick={()=>this.removeLocalStorage()}>Exit</NavLink>
+
+                
               </Menu.Item>
             </Menu>            
           </Header>

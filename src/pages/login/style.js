@@ -5,7 +5,7 @@ export const LoginWrapper = styled.div `
     /* display: flex; */
     /* flex-direction: row-reverse; */
     margin: 30px auto;
-    height: 600px;
+    height: 100vh;
     width: 300px;
     
 

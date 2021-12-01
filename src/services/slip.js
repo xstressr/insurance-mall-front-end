@@ -10,3 +10,9 @@ export function queryByName(loginName) {
     }
   )
 }
+
+export function insertSlip(slipInfo) {
+  return request.post(
+    "/api/slips/insert",slipInfo
+  )
+}

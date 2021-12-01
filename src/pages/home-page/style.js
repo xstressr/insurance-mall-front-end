@@ -90,7 +90,7 @@ export const HomeWrapper = styled.div`
   }
 
   .carousel {
-    width: 1200px;
+    width: 100vw;
     height: 300px;
     margin: auto;
   }
@@ -106,7 +106,7 @@ export const HomeWrapper = styled.div`
 
       .content-top-left {
         width: 890px;
-        height: 300px;
+        height: 350px;
         background-color: #fff;
         border-radius: 15px;
 
@@ -117,7 +117,7 @@ export const HomeWrapper = styled.div`
 
       .content-top-right {
         width: 300px;
-        height: 300px;
+        height: 350px;
         background-color: #fff;
         border-radius: 15px;
 
@@ -130,10 +130,23 @@ export const HomeWrapper = styled.div`
           
           .content-top-right-header{
             text-align: center;
+            margin: 10px 0;
           }
+          
         }
+        .insurance-title {
+            display:flex;
+            justify-content: space-between
+          }
       }
+      .margin-bottom {
+        margin-bottom: 10px;
+      }
+    }
 
+    .insurance-know {
+      height: 400px;
+      background-color: #fff;
     }
   }
 `

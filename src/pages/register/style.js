@@ -6,6 +6,7 @@ export const RegisterWrapper = styled.div`
     /* margin-top: 30px; */
     width: 500px;
     margin: 0 auto;
+    height: 100vh;
   }
 
 `

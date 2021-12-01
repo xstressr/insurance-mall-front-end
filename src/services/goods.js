@@ -46,3 +46,13 @@ export function insertGoods(goodInfo) {
     goodInfo
   )
 }
+
+export function queryGoodDetail(goodname) {
+  return request.get("/api/goods/detail",
+  {
+    params: {
+    goodName: goodname
+   }
+  })
+}
+
