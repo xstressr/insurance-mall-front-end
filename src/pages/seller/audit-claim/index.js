@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Table, Tag, Space } from 'antd';
 
-import { queryByName } from '../../../../services/slip';
+// import { queryByName } from '../../../../services/slip';
 
 const columns = [
   {
@@ -56,7 +56,7 @@ const columns = [
 //   },
 // ];
 
-export default function SearchPolicies() {
+export default function AuditClaim() {
   const [loginName, setLoginName] = useState("");
   const [slipList, setSlipList] = useState();
   const [data, setData] = useState([])
@@ -66,18 +66,8 @@ export default function SearchPolicies() {
   //   console.log(loginName)
   // },[loginName])
 
-  useEffect(() => {
-    const loginName = localStorage.getItem("vip")
-    queryByName(loginName).then((res)=>{
-      console.log(res)
-      setData(res.data)
-    })
-  }, [])
 
-  function querySlips() {
-    
 
-  }
 
 
   return (

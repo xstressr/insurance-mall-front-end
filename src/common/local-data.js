@@ -10,6 +10,10 @@ export const vipMenu = [
     link: "/vip/claim"
   },
   {
+    title: "查询理赔",
+    link: "/vip/searchClaim"
+  },
+  {
     title: "修改密码",
     link: "/vip/updatePassword"
   },
@@ -25,6 +29,10 @@ export const sellerMenu = [
   {
     title: "保险下架",
     link: "/seller/off"
+  },
+  {
+    title: "理赔审计",
+    link: "/seller/auditClaim"
   },
   {
     title: "产品查询",

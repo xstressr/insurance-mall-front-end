@@ -131,6 +131,8 @@ export default function Insured(props) {
       price: price,
       productClaimMax: detail.claimAmount,
       productClaimMin: 1,
+      company: detail.createUser,
+      buyer: localStorage.getItem("vip"),
     }
     insertSlip(slipInfo).then(res=>{
       console.log(res)
@@ -140,7 +142,7 @@ export default function Insured(props) {
           history.push("/")
         }, 1500)
       } else {
-        message.error("Login failed")
+        message.error("Pay failed")
       }
     })
   }
@@ -367,9 +369,9 @@ export default function Insured(props) {
                     </div>
                     <div style={{ marginLeft: "10px", marginTop: "100px" }}>
                       <span>价格:</span>
-                      <p class="primary-color diy-font-color fr">
+                      <p className="primary-color diy-font-color fr">
                         ￥{" "}
-                        <span class="product-price total-price f36">
+                        <span className="product-price total-price f36">
                           <i>{price}</i>
                         </span>
                       </p>

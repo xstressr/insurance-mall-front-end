@@ -3,48 +3,48 @@ import React from "react";
 export default function KnowClaim() {
   return (
     <div style={{ height: '500px', overflowY: 'auto' }}>
-      <div class="detail-ensure-protect">
-        <ul class="ensure-protect-list">
-          <li class="ensure-protect-item ensure-protect-head">
-            <h4 class="protect-item-title diy-f14-bold">投保须知</h4>
+      <div className="detail-ensure-protect">
+        <ul className="ensure-protect-list">
+          <li className="ensure-protect-item ensure-protect-head">
+            <h4 className="protect-item-title diy-f14-bold">投保须知</h4>
           </li>
         </ul>
 
-        <div class="block-table">
+        <div className="block-table">
           <table>
             <tbody>
               <tr>
-                <td class="left">犹豫期</td>
+                <td className="left">犹豫期</td>
 
-                <td class="right">15天</td>
+                <td className="right">15天</td>
               </tr>
 
               <tr>
-                <td class="left">等待期</td>
+                <td className="left">等待期</td>
 
-                <td class="right">90天</td>
+                <td className="right">90天</td>
               </tr>
 
               <tr>
-                <td class="left">重要提示</td>
+                <td className="left">重要提示</td>
 
-                <td class="right">
+                <td className="right">
                   <a
-                    class="diy-font-color"
+                    className="diy-font-color"
                     href="https://files2.huizecdn.com/file1/M00/46/F8/CgUA3GFudYuAYpLVAAVVqEEXm4M482.pdf"
                   >
                     费率表
                   </a>
 
                   <a
-                    class="diy-font-color"
+                    className="diy-font-color"
                     href="https://files2.huizecdn.com/file1/M00/A8/C1/CgUA3GBii_SAG1gDAByZaA0r13w13.html"
                   >
                     客户告知书
                   </a>
 
                   <a
-                    class="diy-font-color"
+                    className="diy-font-color"
                     href="http://files2.huizecdn.com/file1/M00/B5/BA/CgUA3GBsBQGAeO9HAC8rIAoAXDI007.pdf"
                   >
                     保单样本
@@ -53,26 +53,26 @@ export default function KnowClaim() {
               </tr>
 
               <tr>
-                <td class="left">承保机构</td>
+                <td className="left">承保机构</td>
 
-                <td class="right">
-                  本产品由信泰人寿保险股份有限公司承保，保险公司在浙江、江苏、北京、河北、福建、河南、山东、黑龙江、辽宁、上海、湖北、江西、宁波、广东、厦门、青岛、深圳、大连地区设有分支机构，本产品在保险公司设有分公司的区域销售。A类地区为：
+                <td className="right">
+                  本产品由JOJO保险股份有限公司承保，保险公司在浙江、江苏、北京、河北、福建、河南、山东、黑龙江、辽宁、上海、湖北、江西、宁波、广东、厦门、青岛、深圳、大连地区设有分支机构，本产品在保险公司设有分公司的区域销售。A类地区为：
                   北京、上海、广州、深圳、杭州、南京、武汉（含汉口）、苏州、宁波、厦门、珠海、青岛、南通、东莞、济南、福州、佛山。B类地区为：除A类地区外，其他保险公司已开设分公司的区域。
                 </td>
               </tr>
 
               <tr>
-                <td class="left">线上服务</td>
+                <td className="left">线上服务</td>
 
-                <td class="right">
+                <td className="right">
                   本产品已实现投保咨询、在线投保、在线核保、承保、批改、保全、退保、理赔和投诉处理等全流程线上服务体系
                 </td>
               </tr>
 
               <tr>
-                <td class="left">如实告知</td>
+                <td className="left">如实告知</td>
 
-                <td class="right">
+                <td className="right">
                   <strong>
                     如实告知：订立合同时，您应当就保险公司询问的问题进行如实告知。若您故意或者因重大过失未履行如实告知义务，足以影响保险公司决定是否同意承保或提高保险费率的，保险公司有权解除本合同。若您故意不履行如实告知义务，对于本合同解除前发生的保险事故，保险公司不承担给付保险金的责任，并不退还保险费。若您因重大过失未履行如实告知义务，对保险事故的发生有严重影响的，对于合同解除前发生的保险事故，保险公司不承担给付保险金的责任，但退还您所支付的保险费。
                   </strong>
@@ -80,20 +80,20 @@ export default function KnowClaim() {
               </tr>
 
               <tr>
-                <td class="left">退保损失</td>
+                <td className="left">退保损失</td>
 
-                <td class="right">
+                <td className="right">
                   为充分保障您的权益，本合同设有犹豫期。电子保单合同发出次日视为您的合同签收日，自您签收保险合同之日起15日内为犹豫期，具体期限以保险合同载明的期限为准。保险监督管理机构对犹豫期另有规定的，从其规定。您在犹豫期内解除合同的，保险公司扣除工本费后无息退还您的所交保费，如您在犹豫期后解除保险合同，将退还您的现金价值。犹豫期后退保，您将遭受一定的损失。
                 </td>
               </tr>
 
               <tr>
-                <td class="left">支付和凭证</td>
+                <td className="left">支付和凭证</td>
 
-                <td class="right">
+                <td className="right">
                   （1）本产品的支付方式为一次支付全部保险费或分期支付保险费。如您选择一次支付全部保险费，则保险公司将在投保时按您选择的支付方式收取保险费；如您选择分期支付保险费，首期保险费将在投保时候按您选择的支付方式收取，除首期保险费外的其他保险费，保险公司将从约定账户按照合同约定的方式和金额划转。
                   <br />
-                  （2）理赔款将会在信泰保险审核通过后打入您提供的指定银行卡账户。
+                  （2）理赔款将会在JOJO保险审核通过后打入您提供的指定银行卡账户。
                   <br />
                   （3）支付服务保险赔款的支付方式、退保金的支付方式、保险金的支付方式，可通过拨打客服热线95365进行咨询。或者建议您到保险公司线下的分支机构直接咨询。具体地址您可以参考
                   <a
@@ -111,9 +111,9 @@ export default function KnowClaim() {
           </table>
         </div>
 
-        <div class="clearfix notice-more-table">
+        <div className="clearfix notice-more-table">
           <p>其余须知：</p>
-          <ol class="f12">
+          <ol className="f12">
             <li>
               <strong>1. </strong>投保前请您仔细阅读：
               <a

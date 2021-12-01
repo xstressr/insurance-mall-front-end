@@ -18,6 +18,8 @@ import CommonQuestions from "../components/common-questions";
 import ProductNavi from "../components/navigation";
 import KnowClaim from "../components/know-claim";
 import Insured from "../pages/home-page/insured";
+import SearchClaim from "../pages/vip/c-pages/search-claim";
+import AuditClaim from "../pages/seller/audit-claim";
 
 const routes = [
   {
@@ -86,6 +88,10 @@ const routes = [
         component: Off
       },
       {
+        path: "/seller/auditClaim",
+        component: AuditClaim
+      },
+      {
         path: "/seller/searchProducts",
         component: SearchProducts
       },
@@ -102,6 +108,10 @@ const routes = [
       {
         path: "/vip/claim",
         component: Claim
+      },
+      {
+        path: "/vip/searchClaim",
+        component: SearchClaim
       },
       {
         path: "/vip/updatePassword",

@@ -3,45 +3,45 @@ import React from "react";
 export default function ProductNavi() {
   return (
     <div style={{ height: '500px', overflowY: 'auto' }}>
-      <div class="detail-product-claims pr30">
-        <div class="product-claims-service">
-          <div class="claims-service-box">
-            <ul class="claims-service-tab-menu tac clearfix">
-              <li class="claims-service-tab-item active">
-                <i class="iconfont"></i>
-                <p class="pt20">1、报案</p>
+      <div className="detail-product-claims pr30">
+        <div className="product-claims-service">
+          <div className="claims-service-box">
+            <ul className="claims-service-tab-menu tac clearfix">
+              <li className="claims-service-tab-item active">
+                <i className="iconfont"></i>
+                <p className="pt20">1、报案</p>
               </li>
 
-              <li class="claims-service-tab-item claims-service-tab-separator">
-                <i class="iconfont"></i>
+              <li className="claims-service-tab-item claims-service-tab-separator">
+                <i className="iconfont"></i>
               </li>
 
-              <li class="claims-service-tab-item">
-                <i class="iconfont"></i>
-                <p class="pt20">2、提交理赔资料</p>
+              <li className="claims-service-tab-item">
+                <i className="iconfont"></i>
+                <p className="pt20">2、提交理赔资料</p>
               </li>
 
-              <li class="claims-service-tab-item claims-service-tab-separator">
-                <i class="iconfont"></i>
+              <li className="claims-service-tab-item claims-service-tab-separator">
+                <i className="iconfont"></i>
               </li>
 
-              <li class="claims-service-tab-item">
-                <i class="iconfont"></i>
-                <p class="pt20">3、理赔资料审核</p>
+              <li className="claims-service-tab-item">
+                <i className="iconfont"></i>
+                <p className="pt20">3、理赔资料审核</p>
               </li>
 
-              <li class="claims-service-tab-item claims-service-tab-separator">
-                <i class="iconfont"></i>
+              <li className="claims-service-tab-item claims-service-tab-separator">
+                <i className="iconfont"></i>
               </li>
 
-              <li class="claims-service-tab-item">
-                <i class="iconfont"></i>
-                <p class="pt20">4、领取赔款</p>
+              <li className="claims-service-tab-item">
+                <i className="iconfont"></i>
+                <p className="pt20">4、领取赔款</p>
               </li>
             </ul>
 
-            <div class="claims-service-tab-container">
-              <div class="claims-service-tab-pane fn-hide">
+            <div className="claims-service-tab-container">
+              <div className="claims-service-tab-pane fn-hide">
                 1、报案成功后，我们会给您发送索赔指引邮件,告知您理赔流程、资料要求及资料递交方式。
                 <br />{" "}
                 2、同时，我们还会给您发送报案短信，点击短信中的链接，可在线查看索赔指引、理赔联系方式、理赔进度等。
@@ -50,11 +50,11 @@ export default function ProductNavi() {
                 <br />
               </div>
 
-              <div class="claims-service-tab-pane fn-hide">
+              <div className="claims-service-tab-pane fn-hide">
                 事故责任明确、理赔资料齐全的案件,审核周期为:小马闪赔（如支持）一般为1个工作日,普通类一般为5-7个工作日,重大类一般为20-22个工作日。
               </div>
 
-              <div class="claims-service-tab-pane fn-hide">
+              <div className="claims-service-tab-pane fn-hide">
                 理赔款一般在结案后的1-2个工作日可以到账。为保障到账时效,建议在提交理赔资料时以工、农、中、建、交或邮储等银行卡作为收款账户，并在申请书上写明具体开户行。
                 <br />
               </div>
@@ -62,10 +62,10 @@ export default function ProductNavi() {
           </div>
         </div>
 
-        <div class="product-claims-notice">
-          <h3 class="f14 pb20 pt20 mb20 fc6 fb bor-bottom">理赔须知</h3>
+        <div className="product-claims-notice">
+          <h3 className="f14 pb20 pt20 mb20 fc6 fb bor-bottom">理赔须知</h3>
 
-          <div class="f12 lh20 clearfix">
+          <div className="f12 lh20 clearfix">
             1、发生保险事故,请联系JOJO报案。
             <br /> <br />{" "}
             2、报案时，请您提供保单号(或有效证件号码)、出险人姓名、出险时间、出险地点、出险原因、治疗就医情况等基本信息。

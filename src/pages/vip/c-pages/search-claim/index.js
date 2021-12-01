@@ -56,7 +56,7 @@ const columns = [
 //   },
 // ];
 
-export default function SearchPolicies() {
+export default function SearchClaim() {
   const [loginName, setLoginName] = useState("");
   const [slipList, setSlipList] = useState();
   const [data, setData] = useState([])
