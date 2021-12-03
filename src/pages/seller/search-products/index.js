@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import { Table, Tag, Space, Button } from 'antd';
-import { queryGoodsAbbreByName, changeStatus } from '../../../services/goods';
+import { Table, Tag, Space, Button, Modal } from 'antd';
+import { queryGoodsByName, changeStatus } from '../../../services/goods';
 
 const category = {
   1: "重疾险",
@@ -20,66 +20,161 @@ const status = {
   
 }
 
-const columns = [
-  {
-    title: '保险商品',
-    dataIndex: 'goodsName',
-    key: 'name',
-    fixed: 'left',
-  },
-  {
-    title: '保险种类',
-    dataIndex: 'goodsCategoryId',
-    key: 'category',
-    render: (test) => {
-      return (
-        <Space size="middle">
-          <a>{category[test]}</a>
-        </Space>
-      )
-    }
-  },
-  {
-    title: '保险图片',
-    dataIndex: 'goodsCoverImg',
-    key: 'img',
-    render: (img) => (
-      <Space size="middle">
-        <a href={img}>图片</a>
-      </Space>
-    ),
-  },
-  {
-    title: '保险状态',
-    dataIndex: 'goodsSellStatus',
-    key: 'status',
-    fixed: 'right',
-    render: (status1) => {
-      return (
-        <Space size="middle">
-          <Tag color={status1 == 1 ? "magenta" : status1 == 2 ? "green": "cyan"}>
-            {status[status1]}
-          </Tag>
-        </Space>
-      )
-    }
-  },
-  
-];
 
-function offProduct(goodsName) {
-  changeStatus(goodsName, 2).then(res => {
-    console.log(res)
-  })
-}
 
 
 export default function SearchProducts() {
   const [data, setData] = useState([])
+  const [text, setText] = useState();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const columns = [
+    
+    {
+      title: '保险公司',
+      dataIndex: 'createUser',
+      key: 'company',
+      fixed: 'left',
+      width:100,
+      
+    },
+    {
+      title: '保险商品',
+      dataIndex: 'goodsName',
+      key: 'name',
+      fixed: 'left',
+      width:150,
+    },
+    {
+      title: '保险种类',
+      dataIndex: 'goodsCategoryId',
+      key: 'category',
+      width:100,
+      render: (test) => {
+        return (
+          <Space size="middle">
+            <span>{category[test]}</span>
+          </Space>
+        )
+      }
+    },
+    {
+      title: '保险图片',
+      dataIndex: 'goodsCoverImg',
+      key: 'img',
+      width: 100,
+      render: (img) => (
+        <Space size="middle">
+          <a href={img}>图片</a>
+        </Space>
+      ),
+    },
+    {
+      title: '保险介绍',
+      dataIndex: 'goodsIntro',
+      key: 'name',
+      width:150,
+    },
+    {
+      title: '保险内容',
+      dataIndex: 'goodsDetailContent',
+      key: 'name',
+      width:150,
+      render: (text) => {
+        return (
+          <Button type="primary" onClick={() => showModal(text)}>
+            详情
+          </Button>
+        );
+      },
+    },
+    {
+      title: '保险初始售价',
+      dataIndex: 'sellingPrice',
+      key: 'name',
+      width:150,
+      render: (text) => {
+        return <span>{"¥" + text}</span>;
+      },
+    },
+    {
+      title: '保障期限',
+      dataIndex: 'deadline',
+      key: 'name',
+      width:150,
+    },
+    {
+      title: '保障最高额度',
+      dataIndex: 'claimAmount',
+      key: 'name',
+      width:150,
+      render: (text) => {
+        return <span>{"¥" + text}</span>;
+      },
+    },
+    {
+      title: '保险种类',
+      dataIndex: 'goodsCategoryId',
+      key: 'category',
+      render: (test) => {
+        return (
+          <Space size="middle">
+            <a>{category[test]}</a>
+          </Space>
+        )
+      }
+    },
+    {
+      title: '保险图片',
+      dataIndex: 'goodsCoverImg',
+      key: 'img',
+      render: (img) => (
+        <Space size="middle">
+          <a href={img}>图片</a>
+        </Space>
+      ),
+    },
+    {
+      title: '保险状态',
+      dataIndex: 'goodsSellStatus',
+      key: 'status',
+      fixed: 'right',
+      width: 100,
+      render: (status1) => {
+        return (
+          <Space size="middle">
+            <Tag color={status1 == 1 ? "magenta" : status1 == 2 ? "green": "cyan"}>
+              {status[status1]}
+            </Tag>
+          </Space>
+        )
+      }
+    },
+    
+  ];
+  
+  function offProduct(goodsName) {
+    changeStatus(goodsName, 2).then(res => {
+      console.log(res)
+    })
+  }
+
+  const showModal = (text) => {
+    setText(text);
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   useEffect(() => {
     let name = localStorage.getItem("seller")
-    queryGoodsAbbreByName(name).then(res=>{
+    queryGoodsByName(name).then(res=>{
       // console.log(res);
       setData(res.data)
     })
@@ -88,7 +183,15 @@ export default function SearchProducts() {
   return (
     <div>
      <h3 style={{marginBottom:"30px"}}>Products Search</h3>
-     <Table columns={columns} dataSource={data} />
+     <Table columns={columns} dataSource={data} scroll={{ x: 1300 }}/>
+     <Modal
+        title="描述详情"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <pre>{text}</pre>
+      </Modal>
     </div>
   )
 }
