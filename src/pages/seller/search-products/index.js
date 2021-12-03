@@ -25,6 +25,7 @@ const columns = [
     title: '保险商品',
     dataIndex: 'goodsName',
     key: 'name',
+    fixed: 'left',
   },
   {
     title: '保险种类',
@@ -52,6 +53,7 @@ const columns = [
     title: '保险状态',
     dataIndex: 'goodsSellStatus',
     key: 'status',
+    fixed: 'right',
     render: (status1) => {
       return (
         <Space size="middle">

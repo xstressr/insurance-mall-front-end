@@ -57,12 +57,14 @@ export default function Claim() {
     const time = form.getFieldValue("time");
     const location = form.getFieldValue("location");
     const desc = form.getFieldValue("desc");
+    const money = form.getFieldValue("claimMoney");
     let claimInfo = {
       guaranteeNo: no,
       eventTime: time,
       locationAccident: location,
       accidentDesc: desc,
       submitter: localStorage.getItem("vip"),
+      money: money
     };
     insertClaim(claimInfo).then((res) => {
       // console.log(res);
@@ -104,6 +106,15 @@ export default function Claim() {
           >
             <DatePicker />
           </Form.Item>
+          <Form.Item
+          label="报案金额"
+          name="claimMoney"
+          hasFeedback
+          rules={[{ required: true }]}
+        >
+          <Input prefix="￥" suffix="RMB" />
+          {/* <InputNumber addonAfter={<Option value="CNY">¥</Option>} /> */}
+        </Form.Item>
           <Form.Item
             name="location"
             label="报案地点"

@@ -150,7 +150,9 @@ export default function Home() {
            return (
             <div>
             <h3 style={contentStyle}>
-              <img src={item.imgurl} alt="轮播图1"></img>
+              <img src={item.imgurl} alt={item.insuranceName} style={{width:"100vw"}}>
+              
+              </img>
             </h3>
           </div>
            )
@@ -238,7 +240,7 @@ export default function Home() {
             <div className="content-top-right-title">
               <div className="pic">
                 <img
-                  src="//r1y3bddb4.hd-bkt.clouddn.com/51194f6e609c40eba3c5274e80fd2cf1.jpeg"
+                  src="//r3gvhifgy.hd-bkt.clouddn.com/313766726f0f4883aee53722952c916b.jpeg"
                   alt="头像"
                   style={{ width: "48px", height: "48px" }}
                 />

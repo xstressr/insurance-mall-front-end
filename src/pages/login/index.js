@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, Checkbox, Select, Alert, message, Menu } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { LoginWrapper } from "./style";
@@ -21,6 +21,11 @@ export default function Login() {
   const [form] = Form.useForm();
   let history = useHistory();
 
+  useEffect(() => {
+    if(localStorage.getItem("vip")) {
+      history.push("/vip")
+    }
+  }, [])
 
   const submit = () => {
     // console.log(form.getFieldInstance("username"))

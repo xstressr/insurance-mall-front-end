@@ -66,6 +66,8 @@ const status = {
 export default function AuditClaim() {
   const [loginName, setLoginName] = useState("");
   const [slipList, setSlipList] = useState();
+  const [text, setText] = useState();
+
   const [data, setData] = useState([])
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -110,9 +112,24 @@ export default function AuditClaim() {
       }
     },
     {
+      title: '报案金额',
+      dataIndex: 'money',
+      key: 'money',
+      render: (text) => {
+        return <span>{"¥"+text}</span>
+      }
+    },
+    {
       title: '案件描述',
       dataIndex: 'accidentDesc',
       key: 'desc',
+      render: (text) => {
+        return (
+          <Button type="primary" onClick={() => showModal(text)}>
+            详情
+          </Button>
+        );
+      },
     },
     {
       title: 'Action',
@@ -140,7 +157,8 @@ export default function AuditClaim() {
     },
   ];
 
-    const showModal = () => {
+    const showModal = (text) => {
+      setText(text);
     setIsModalVisible(true);
   };
 
@@ -181,6 +199,14 @@ export default function AuditClaim() {
     <div>
      <h3 style={{marginBottom:"30px"}}>Audit Claims</h3>
      <Table columns={columns} dataSource={data} />
+     <Modal
+        title="描述详情"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <pre>{text}</pre>
+      </Modal>
     </div>
   )
 }
