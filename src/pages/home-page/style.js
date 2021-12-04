@@ -91,7 +91,7 @@ export const HomeWrapper = styled.div`
 
   .carousel {
     width: 100vw;
-    height: 300px;
+    height: 400px;
     margin: auto;
   }
 
@@ -106,9 +106,20 @@ export const HomeWrapper = styled.div`
 
       .content-top-left {
         width: 890px;
-        height: 350px;
+        height: 450px;
         background-color: #fff;
         border-radius: 15px;
+
+        .product-more {
+          display: flex;
+          flex-direction: row-reverse;
+          padding-right: 25px
+
+        }
+
+        .top3 {
+          border-color: #eb2f96;
+        }
 
         .content-top-left-title {
           padding-left: 10px;

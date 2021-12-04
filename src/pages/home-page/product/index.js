@@ -68,7 +68,7 @@ export default function Product(props) {
                   <Descriptions.Item label="time">{detail.createTime}</Descriptions.Item>
                   <Descriptions.Item label="Amount">{"¥"+detail.sellingPrice}</Descriptions.Item>
                   <Descriptions.Item label="Product Image"><Image width={200} src={detail.goodsCoverImg} /></Descriptions.Item>
-                  <Descriptions.Item ></Descriptions.Item>
+                  <Descriptions.Item label="Sales">{detail.total}</Descriptions.Item>
                   <Descriptions.Item label="Good Info">
                   {detail.goodsIntro}
                     <br />

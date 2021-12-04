@@ -16,12 +16,13 @@ import {
   ShopOutlined,
   SecurityScanOutlined,
   RedEnvelopeOutlined,
+  SmileOutlined,
+  HeartTwoTone,
 } from "@ant-design/icons";
 import { HomeWrapper } from "./style";
-import astronaut from "@/assets/img/astronaut.jpg";
-import pexels from "@/assets/img/pexels.jpg";
+
 import { Link, NavLink } from "react-router-dom";
-import { queryAllGoods } from "../../services/goods";
+import { queryAllByType, queryAllGoods } from "../../services/goods";
 import { JYFooter } from "../../components/footer";
 import { queryAll } from "../../services/topline";
 import { queryAllCarousel } from "../../services/carousel";
@@ -32,14 +33,8 @@ function callback(key) {
   console.log(key);
 }
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
-
 const contentStyle = {
-  height: "300px",
+  height: "400px",
   color: "#fff",
   // lineHeight: '160px',
   textAlign: "center",
@@ -54,37 +49,57 @@ export default function Home() {
   const [wealth, setWealth] = useState([]);
   const [travel, setTravel] = useState([]);
   const [topline, setTopline] = useState([]);
-  const [carousel, setCarousel] = useState([])
+  const [carousel, setCarousel] = useState([]);
 
   useEffect(() => {
+    getCarousel();
+    getAllTopLine();
+    getAllGoods();
+    getAllByType(3);
+    getAllByType(5);
+    getAllByType(8);
+  }, []);
+
+  function getAllGoods() {
     queryAllGoods().then((res) => {
       console.log(res);
       setData(res.data);
-
-      const acc = res.data.filter((word) => word.goodsCategoryId == 3);
-      const wea = res.data.filter((word) => word.goodsCategoryId == 8);
-      const tra = res.data.filter((word) => word.goodsCategoryId == 5);
-
-      setAccident(acc);
-      setWealth(wea);
-      setTravel(tra);
     });
-  }, []);
+  }
 
-  useEffect(() => {
+  function getAllByType(type) {
+    queryAllByType(type).then((res) => {
+      switch (type) {
+        case 3:
+          setAccident(res.data);
+          break;
+        case 5:
+          setTravel(res.data);
+          break;
+        case 8:
+          setWealth(res.data);
+          break;
+        default:
+          break;
+      }
+
+      return res.data;
+    });
+  }
+
+  function getAllTopLine() {
     queryAll().then((res) => {
       console.log(res);
       setTopline(res.data);
     });
-  }, []);
+  }
 
-  useEffect(() => {
-    queryAllCarousel().then(res=>{
-      console.log(res)
-      setCarousel(res.data)
-    })
-    
-  }, [])
+  function getCarousel() {
+    queryAllCarousel().then((res) => {
+      console.log(res);
+      setCarousel(res.data);
+    });
+  }
 
   return (
     <HomeWrapper>
@@ -146,17 +161,21 @@ export default function Home() {
       </div>
       <div className="carousel">
         <Carousel autoplay>
-         {carousel.map((item)=>{
-           return (
-            <div>
-            <h3 style={contentStyle}>
-              <img src={item.imgurl} alt={item.insuranceName} style={{width:"100vw"}}>
-              
-              </img>
-            </h3>
-          </div>
-           )
-         })}
+          {carousel.map((item) => {
+            return (
+              <div>
+                <h3 style={contentStyle}>
+                  <div>{item.insuranceName}</div>
+                  <div style={{ textAlign: "center" }}>
+                    <Link to={`/app/product?productCode=${item.insuranceName}`}>
+                      <img src={item.imgurl} alt={item.insuranceName} 
+                      style={{margin: "0 auto", width: "600px", height: "350px"}}></img>
+                    </Link>
+                  </div>
+                </h3>
+              </div>
+            );
+          })}
         </Carousel>
       </div>
 
@@ -171,10 +190,28 @@ export default function Home() {
                     {accident.map((item, index) => {
                       return (
                         <React.Fragment>
-                          <Col offset={index % 3 != 0 ? 1 : 0}
-                          style={{ marginBottom: "20px" }}>
-                            <Card style={{ width: 250 }}>
-                              <p><Link to= {`/app/product?productCode=${item.goodsName}`}>{item.goodsName}</Link></p>
+                          <Col
+                            offset={index % 3 != 0 ? 1 : 0}
+                            style={{ marginBottom: "20px" }}
+                          >
+                            <Card
+                              style={{ width: 250 }}
+                              className={index < 3 ? "top3" : null}
+                            >
+                              {index < 3 ? (
+                                <React.Fragment>
+                                  <HeartTwoTone twoToneColor="#eb2f96" />
+                                  <span style={{ color: "#eb2f96" }}> hot</span>
+                                </React.Fragment>
+                              ) : null}
+                              <p>
+                                <Link
+                                  to={`/app/product?productCode=${item.goodsName}`}
+                                >
+                                  {item.goodsName}
+                                </Link>
+                              </p>
+                              <span>销量 {item.total}</span>
                             </Card>
                           </Col>
                         </React.Fragment>
@@ -188,10 +225,28 @@ export default function Home() {
                     {wealth.map((item, index) => {
                       return (
                         <React.Fragment>
-                          <Col offset={index % 3 != 0 ? 1 : 0}
-                          style={{ marginBottom: "20px" }}>
-                            <Card style={{ width: 250 }}>
-                            <p><Link to= {`/app/product?productCode=${item.goodsName}`}>{item.goodsName}</Link></p>
+                          <Col
+                            offset={index % 3 != 0 ? 1 : 0}
+                            style={{ marginBottom: "20px" }}
+                          >
+                            <Card
+                              style={{ width: 250 }}
+                              className={index < 3 ? "top3" : null}
+                            >
+                              {index < 3 ? (
+                                <React.Fragment>
+                                  <HeartTwoTone twoToneColor="#eb2f96" />
+                                  <span style={{ color: "#eb2f96" }}> hot</span>
+                                </React.Fragment>
+                              ) : null}
+                              <p>
+                                <Link
+                                  to={`/app/product?productCode=${item.goodsName}`}
+                                >
+                                  {item.goodsName}
+                                </Link>
+                              </p>
+                              <span>销量 {item.total}</span>
                             </Card>
                           </Col>
                         </React.Fragment>
@@ -204,10 +259,28 @@ export default function Home() {
                     {travel.map((item, index) => {
                       return (
                         <React.Fragment>
-                          <Col offset={index % 3 != 0 ? 1 : 0}
-                          style={{ marginBottom: "20px" }}>
-                            <Card style={{ width: 250 }}>
-                            <p><Link to= {`/app/product?productCode=${item.goodsName}`}>{item.goodsName}</Link></p>
+                          <Col
+                            offset={index % 3 != 0 ? 1 : 0}
+                            style={{ marginBottom: "20px" }}
+                          >
+                            <Card
+                              style={{ width: 250 }}
+                              className={index < 3 ? "top3" : null}
+                            >
+                              {index < 3 ? (
+                                <React.Fragment>
+                                  <HeartTwoTone twoToneColor="#eb2f96" />
+                                  <span style={{ color: "#eb2f96" }}> hot</span>
+                                </React.Fragment>
+                              ) : null}
+                              <p>
+                                <Link
+                                  to={`/app/product?productCode=${item.goodsName}`}
+                                >
+                                  {item.goodsName}
+                                </Link>
+                              </p>
+                              <span>销量 {item.total}</span>
                             </Card>
                           </Col>
                         </React.Fragment>
@@ -216,6 +289,7 @@ export default function Home() {
                   </Row>
                 </TabPane>
                 <TabPane tab="全部产品" key="4">
+                  <div className="product-more">更多</div>
                   <Row justify="center">
                     {data.map((item, index) => {
                       return (
@@ -224,8 +298,25 @@ export default function Home() {
                             offset={index % 3 != 0 ? 1 : 0}
                             style={{ marginBottom: "20px" }}
                           >
-                            <Card style={{ width: 250 }}>
-                            <p><Link to= {`/app/product?productCode=${item.goodsName}`}>{item.goodsName}</Link></p>
+                            <Card
+                              style={{ width: 250 }}
+                              className={index < 3 ? "top3" : null}
+                            >
+                              {index < 3 ? (
+                                <React.Fragment>
+                                  <HeartTwoTone twoToneColor="#eb2f96" />
+                                  <span style={{ color: "#eb2f96" }}> hot</span>
+                                </React.Fragment>
+                              ) : null}
+
+                              <p>
+                                <Link
+                                  to={`/app/product?productCode=${item.goodsName}`}
+                                >
+                                  {item.goodsName}
+                                </Link>
+                              </p>
+                              <span>销量 {item.total}</span>
                             </Card>
                           </Col>
                         </React.Fragment>
@@ -309,16 +400,16 @@ export default function Home() {
         </div>
         <h3 style={{ margin: "10px 0" }}>保险知识</h3>
         <div className="insurance-know">
+          <div className="product-more">更多</div>
+
           <Collapse defaultActiveKey={["0"]} onChange={callback}>
-            {topline.map((item, index)=>{
+            {topline.map((item, index) => {
               return (
                 <Panel header={item.messageTitle} key={index}>
-              <p>{item.messageContent}</p>
-            </Panel>
-              )
+                  <p>{item.messageContent}</p>
+                </Panel>
+              );
             })}
-            
-            
           </Collapse>
         </div>
       </div>

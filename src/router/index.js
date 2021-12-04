@@ -50,6 +50,17 @@ const routes = [
     ]
   },
   {
+    path: "/app/products",
+    
+  },
+  {
+    path: "/app/knows",
+    
+  },
+  {
+    path: "/app/topics"
+  },
+  {
     path: "/app/insured",
     component: Insured
   },

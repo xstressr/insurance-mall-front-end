@@ -56,3 +56,12 @@ export function queryGoodDetail(goodname) {
   })
 }
 
+export function queryAllByType(type) {
+  return request.get("/api/goods/getAllByType",
+  {
+    params: {
+    type: type
+   }
+  })
+}
+
