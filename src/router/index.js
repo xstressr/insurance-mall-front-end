@@ -20,6 +20,9 @@ import KnowClaim from "../components/know-claim";
 import Insured from "../pages/home-page/insured";
 import SearchClaim from "../pages/vip/c-pages/search-claim";
 import AuditClaim from "../pages/seller/audit-claim";
+import Products from "../pages/home-page/products";
+import Knows from "../pages/home-page/knows";
+
 
 const routes = [
   {
@@ -51,10 +54,11 @@ const routes = [
   },
   {
     path: "/app/products",
-    
+    component: Products
   },
   {
     path: "/app/knows",
+    component: Knows
     
   },
   {

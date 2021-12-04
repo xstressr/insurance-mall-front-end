@@ -289,7 +289,9 @@ export default function Home() {
                   </Row>
                 </TabPane>
                 <TabPane tab="全部产品" key="4">
-                  <div className="product-more">更多</div>
+                  <div className="product-more">
+                    <Link to={"/app/products"}>更多</Link>
+                  </div>
                   <Row justify="center">
                     {data.map((item, index) => {
                       return (

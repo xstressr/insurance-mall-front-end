@@ -65,3 +65,13 @@ export function queryAllByType(type) {
   })
 }
 
+export function findAll(pageNum,  pageSize) {
+  return request.get("/api/goods/getGoodsList",
+  {
+    params: {
+      pageNum: pageNum,
+      pageSize: pageSize
+   }
+  })
+}
+
