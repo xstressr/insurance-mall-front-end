@@ -45,13 +45,13 @@ export default function Login() {
         .then(res=>{
           // console.log(res)
           if(res.resultCode) {
-            message.success("Login success")
+            message.success("登陆成功")
             localStorage.setItem("vip", username)
             setTimeout(()=>{
               history.push("/vip")
             }, 1500)
           } else {
-            message.error("Login failed")
+            message.error("登陆失败")
           }
         }).catch(err => {
         })
@@ -62,13 +62,13 @@ export default function Login() {
         .then(res=>{
           console.log(res)
           if(res.resultCode) {
-            message.success("Login success")
+            message.success("登陆成功")
             localStorage.setItem("seller", username)
             setTimeout(()=>{
               history.push("/seller")
             }, 1500)
           } else {
-            message.error("Login failed")
+            message.error("登陆失败")
           }
         }).catch(err => {
         })
@@ -79,13 +79,13 @@ export default function Login() {
         .then(res=>{
           console.log(res)
           if(res.resultCode) {
-            message.success("Login success")
+            message.success("登陆成功")
             localStorage.setItem("admin", username)
             setTimeout(()=>{
               history.push("/admin")
             }, 1500)
           } else {
-            message.error("Login failed")
+            message.error("登陆失败")
 
           }
         }).catch(err => {
@@ -103,7 +103,7 @@ export default function Login() {
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["shop"]}>
             <Menu.Item key="shop">{"JOJO商城"}</Menu.Item>
             <Menu.Item key="exit">
-            <NavLink to={"/"} >Exit</NavLink>
+            <NavLink to={"/"} >退出</NavLink>
             </Menu.Item>
             
           </Menu></Header>
@@ -120,7 +120,7 @@ export default function Login() {
                 >
                   <Form.Item name="occupationType" >
                     <Select
-                      placeholder="Select a option and change input text above"
+                      placeholder="请选择一个角色"
                       allowClear
                     >
                       <Option value="vip">会员</Option>
@@ -133,7 +133,7 @@ export default function Login() {
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Username!",
+                        message: "请输入您的用户名!",
                       },
                     ]}
                   >
@@ -147,7 +147,7 @@ export default function Login() {
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Password!",
+                        message: "请输入你的密码!",
                       },
                     ]}
                   >
@@ -159,7 +159,7 @@ export default function Login() {
                   </Form.Item>
                   <Form.Item>
                     <Form.Item name="remember" valuePropName="checked" noStyle>
-                      <Checkbox>Remember me</Checkbox>
+                      <Checkbox>记住我</Checkbox>
                     </Form.Item>
 
                     {/* <a className="login-form-forgot" href="">
@@ -175,10 +175,10 @@ export default function Login() {
                       onClick={submit}
                       style={{marginRight: "10px"}}
                     >
-                      Log in
+                      登陆
                     </Button>
                     Or 
-                    <NavLink to={"/register"} style={{marginLeft: "10px"}}>register now!</NavLink>
+                    <NavLink to={"/register"} style={{marginLeft: "10px"}}>注册!</NavLink>
                     
                   </Form.Item>
                 </Form>

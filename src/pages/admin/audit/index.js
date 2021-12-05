@@ -140,7 +140,7 @@ export default function Audit() {
       title: 'Action',
       key: 'action',
       fixed: 'right',
-      width: 100,
+      width: 130,
       render: (text, record) => (
         <Space size="middle">
           <Button type="primary"  
@@ -173,7 +173,7 @@ export default function Audit() {
 
   return (
     <div>
-     <h3 style={{marginBottom:"30px"}}>Products OnBoard</h3>
+     <h3 style={{marginBottom:"30px"}}>新产品审核</h3>
      <Table columns={columns} dataSource={data}  scroll={{ x: 1300 }}/>
      <Modal
         title="描述详情"

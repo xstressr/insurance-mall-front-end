@@ -65,11 +65,28 @@ export const KnowsWrapper = styled.div`
               align-items: flex-end;
               -moz-box-pack: justify;
               -ms-flex-pack: justify;
-              justify-content: space-between;
+              /* justify-content: space-between; */
               font-size: 12px;
               amily: PingFangSC, PingFangSC-Regular;
               font-weight: 400;
               color: #919cac;
+              .commend-list {
+                display: flex;
+                font-size: 12px;
+                align-items: center;
+                min-height: 20px;
+                .style-tag {
+                  border-radius: 3px;
+                  color: #a67411;
+                  margin-right: 8px;
+                  background: #ffeacd;
+                  -moz-border-radius: 0 3px 3px 0;
+                  border-radius: 3px;
+                  height: 20px;
+                  line-height: 20px;
+                  padding: 0 5px;
+                }
+              }
             }
           }
         }

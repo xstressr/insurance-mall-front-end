@@ -182,7 +182,7 @@ export default function SearchProducts() {
 
   return (
     <div>
-     <h3 style={{marginBottom:"30px"}}>Products Search</h3>
+     <h3 style={{marginBottom:"30px"}}>产品查询</h3>
      <Table columns={columns} dataSource={data} scroll={{ x: 1300 }}/>
      <Modal
         title="描述详情"

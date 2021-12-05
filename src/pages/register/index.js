@@ -225,12 +225,12 @@ export default function Register() {
               </Form.Item>
               <Form.Item
                 name="loginName"
-                label="Login Name"
-                tooltip="What name do you want to login website?"
+                label="登录名"
+                tooltip="您想要登陆网站的名字?"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your login name!",
+                    message: "请输入您的登录名!",
                     whitespace: true,
                   },
                 ]}
@@ -240,11 +240,11 @@ export default function Register() {
 
               <Form.Item
                 name="loginPassword"
-                label="Password"
+                label="密码"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your password!",
+                    message: "请输入您的密码!",
                   },
                 ]}
                 hasFeedback
@@ -254,13 +254,13 @@ export default function Register() {
 
               <Form.Item
                 name="confirm"
-                label="Confirm Password"
+                label="确认密码"
                 dependencies={["loginPassword"]}
                 hasFeedback
                 rules={[
                   {
                     required: true,
-                    message: "Please confirm your password!",
+                    message: "请再输入一次密码!",
                   },
                   ({ getFieldValue }) => ({
                     validator(_, value) {
@@ -270,7 +270,7 @@ export default function Register() {
 
                       return Promise.reject(
                         new Error(
-                          "The two passwords that you entered do not match!"
+                          "两次输入密码不一致，请重新输入!"
                         )
                       );
                     },
@@ -282,12 +282,12 @@ export default function Register() {
 
               <Form.Item
                 name="nickName"
-                label="Nickname"
-                tooltip="What do you want others to call you?"
+                label="昵称"
+                tooltip="你想要其他用户叫你的名字?"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your nickname!",
+                    message: "请输入您的昵称!",
                     whitespace: true,
                   },
                 ]}
@@ -297,11 +297,11 @@ export default function Register() {
 
               <Form.Item
                 name="loginMobile"
-                label="Phone Number"
+                label="手机号"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your phone number!",
+                    message: "请输入您的手机号!",
                   },
                 ]}
               >
@@ -315,10 +315,10 @@ export default function Register() {
 
               <Form.Item
                 name="intro"
-                label="Intro"
+                label="自我介绍"
                 rules={[
                   {
-                    message: "Please input Intro",
+                    message: "请输入您的自我介绍",
                   },
                 ]}
               >
@@ -339,7 +339,7 @@ export default function Register() {
                 {...tailFormItemLayout}
               >
                 <Checkbox>
-                  I have read the <a onClick={showModal}>agreement</a>
+                  我已阅读 <a onClick={showModal}>注册协议</a>
                   <Modal
                     title="协议"
                     visible={isModalVisible}
@@ -424,15 +424,14 @@ export default function Register() {
      2、如本会员协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，本会员协议的其余条款仍应有效并且有约束力。
 
 本协议解释权及修订权归JOJO保险经纪有限公司所有。</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
+                    
                     </div>
                   </Modal>
                 </Checkbox>
               </Form.Item>
               <Form.Item {...tailFormItemLayout}>
                 <Button type="primary" htmlType="submit" onClick={register}>
-                  Register
+                  注册
                 </Button>
               </Form.Item>
             </Form>

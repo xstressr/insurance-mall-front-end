@@ -82,7 +82,7 @@ export default function SearchPolicies() {
 
   return (
     <div>
-     <h3 style={{marginBottom:"30px"}}>Search Policies</h3>
+     <h3 style={{marginBottom:"30px"}}>查询保单</h3>
      <Table columns={columns} dataSource={data} />
     </div>
   )

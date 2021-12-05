@@ -71,16 +71,16 @@ export default function UpdatePassword() {
 
   return (
     <div>
-      <h3>Update Password</h3>
+      <h3>修改密码</h3>
       <div style={{width: "500px", margin: "0px auto"}}>
         <Form {...formItemLayout} form={form} name="updatePassword" >
           <Form.Item
             name="password"
-            label="New Password"
+            label="新密码"
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "请输入新密码!",
               },
             ]}
             hasFeedback
@@ -90,13 +90,13 @@ export default function UpdatePassword() {
 
           <Form.Item
             name="confirm"
-            label="Confirm Password"
+            label="确认新密码"
             dependencies={["password"]}
             hasFeedback
             rules={[
               {
                 required: true,
-                message: "Please confirm your password!",
+                message: "请再次输入新密码!",
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
@@ -105,7 +105,7 @@ export default function UpdatePassword() {
                   }
                   return Promise.reject(
                     new Error(
-                      "The two passwords that you entered do not match!"
+                      "两次密码不匹配，请重新输入!"
                     )
                   );
                 },

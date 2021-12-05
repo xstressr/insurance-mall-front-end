@@ -40,7 +40,7 @@ export default function Product(props) {
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["shop"]}>
             <Menu.Item key="shop">{"JOJO商城"}</Menu.Item>
             <Menu.Item key="exit">
-              <NavLink to={"/"}>Exit</NavLink>
+              <NavLink to={"/"}>退出</NavLink>
             </Menu.Item>
           </Menu>
         </Header>
@@ -51,7 +51,7 @@ export default function Product(props) {
               <div style={{paddingTop:"30px"}}>
                 <Descriptions
                   bordered
-                  title="Good Detail"
+                  title="商品详情"
                   extra={<Button
                     type="primary"
                     onClick={() => {
@@ -61,19 +61,19 @@ export default function Product(props) {
                     投保
                   </Button>}
                 >
-                  <Descriptions.Item label="Product">
+                  <Descriptions.Item label="商品名字">
                   {detail.goodsName}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Billing">Prepaid</Descriptions.Item>
-                  <Descriptions.Item label="time">{detail.createTime}</Descriptions.Item>
-                  <Descriptions.Item label="Amount">{"¥"+detail.sellingPrice}</Descriptions.Item>
-                  <Descriptions.Item label="Product Image"><Image width={200} src={detail.goodsCoverImg} /></Descriptions.Item>
-                  <Descriptions.Item label="Sales">{detail.total}</Descriptions.Item>
-                  <Descriptions.Item label="Good Info">
+                  <Descriptions.Item label="付费方式">预付费</Descriptions.Item>
+                  <Descriptions.Item label="创建时间">{detail.createTime}</Descriptions.Item>
+                  <Descriptions.Item label="商家起始价">{"¥"+detail.sellingPrice}</Descriptions.Item>
+                  <Descriptions.Item label="图片"><Image width={200} src={detail.goodsCoverImg} /></Descriptions.Item>
+                  <Descriptions.Item label="销量">{detail.total}</Descriptions.Item>
+                  <Descriptions.Item label="商品介绍">
                   {detail.goodsIntro}
                     <br />
                   </Descriptions.Item>
-                  <Descriptions.Item label="Good Content">
+                  <Descriptions.Item label="商品具体内容">
                   {detail.goodsDetailContent}
                     <br />
                   </Descriptions.Item>

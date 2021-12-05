@@ -132,7 +132,7 @@ export default function AuditClaim() {
       },
     },
     {
-      title: 'Action',
+      title: '动作',
       key: 'action',
       render: (text, record) => (
         <Space size="middle">
@@ -197,7 +197,7 @@ export default function AuditClaim() {
 
   return (
     <div>
-     <h3 style={{marginBottom:"30px"}}>Audit Claims</h3>
+     <h3 style={{marginBottom:"30px"}}>理赔审计</h3>
      <Table columns={columns} dataSource={data} />
      <Modal
         title="描述详情"

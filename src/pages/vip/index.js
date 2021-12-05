@@ -39,11 +39,11 @@ class Vip extends Component {
             <div className="logo" />
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
               <Menu.Item key="1" icon={<AppstoreOutlined />}>
-              <NavLink to={"/"} >Home</NavLink>
+              <NavLink to={"/"} >主页</NavLink>
               </Menu.Item>
-              <Menu.Item key="2" icon={<SettingOutlined />}>nav 2</Menu.Item>
+
               <Menu.Item key="3" icon={<ArrowUpOutlined />} >
-              <NavLink to={"/"} onClick={()=>this.removeLocalStorage()}>Exit</NavLink>
+              <NavLink to={"/"} onClick={()=>this.removeLocalStorage()}>退出</NavLink>
 
                 
               </Menu.Item>
@@ -71,11 +71,7 @@ class Vip extends Component {
               </Menu>
             </Sider>
             <Layout style={{ padding: '0 24px 24px' }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
-              </Breadcrumb>
+              
               <Content
                 className="site-layout-background"
                 style={{

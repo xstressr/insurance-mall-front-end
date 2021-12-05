@@ -155,7 +155,7 @@ export default function Insured(props) {
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["shop"]}>
               <Menu.Item key="shop">{"JOJO商城"}</Menu.Item>
               <Menu.Item key="exit">
-                <NavLink to={"/"}>Exit</NavLink>
+                <NavLink to={"/"}>退出</NavLink>
               </Menu.Item>
             </Menu>
           </Header>
@@ -278,7 +278,7 @@ export default function Insured(props) {
                     >
                       <Tooltip title="Useful information">
                         <Typography.Link href="https://www.huize.com/apps/cps/index/product/job-102172-104957.html">
-                          Need Help?
+                          需要帮助？
                         </Typography.Link>
                       </Tooltip>
                     </Form.Item>

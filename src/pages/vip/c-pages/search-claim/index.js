@@ -98,7 +98,7 @@ export default function SearchClaim() {
 
   return (
     <div>
-      <h3 style={{ marginBottom: "30px" }}>Search Claims Status</h3>
+      <h3 style={{ marginBottom: "30px" }}>查询理赔状态</h3>
       <Table columns={columns} dataSource={data} />
       <Modal
         title="描述详情"

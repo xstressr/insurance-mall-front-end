@@ -86,46 +86,46 @@ export default function Put() {
   return (
     <div>
       <Form name="validate_other" form={form} {...formItemLayout}>
-        <Form.Item label="Selling country">
-          <span className="ant-form-text">China</span>
+        <Form.Item label="售卖国家">
+          <span className="ant-form-text">中国</span>
         </Form.Item>
 
         <Form.Item
-          label="Good Name"
+          label="产品名字"
           name="goodname"
           hasFeedback
           rules={[
             {
               required: true,
-              message: "Please input your good name!",
+              message: "请输入产品名字!",
               // pattern: new RegExp(/^[1-9]\d*$/, "g"),
             },
           ]}
         >
-          <Input placeholder="input placeholder" allowClear />
+          <Input  allowClear />
         </Form.Item>
 
         <Form.Item
-          label="Good Introduce"
+          label="产品简介"
           name="goodintroduce"
           hasFeedback
           rules={[
             {
               required: true,
-              message: "Please input your good introduce!",
+              message: "请输入产品简介!",
             },
           ]}
         >
-          <Input placeholder="input placeholder" allowClear />
+          <Input  allowClear />
         </Form.Item>
         <Form.Item
-          label="Good content"
+          label="产品内容"
           name="goodcontent"
           hasFeedback
           rules={[
             {
               required: true,
-              message: "Please input your good content!",
+              message: "请输入产品内容!",
             },
           ]}
         >
@@ -133,7 +133,7 @@ export default function Put() {
         </Form.Item>
 
         <Form.Item
-          label="Good Price"
+          label="产品起始价格"
           name="goodprice"
           hasFeedback
           rules={[{ required: true }]}
@@ -142,7 +142,7 @@ export default function Put() {
           {/* <InputNumber addonAfter={<Option value="CNY">¥</Option>} /> */}
         </Form.Item>
         <Form.Item
-          label="Claim Amount"
+          label="最高理赔额"
           name="claimamount"
           hasFeedback
           rules={[{ required: true }]}
@@ -151,7 +151,7 @@ export default function Put() {
           {/* <InputNumber addonAfter={<Option value="CNY">¥</Option>} /> */}
         </Form.Item>
         <Form.Item
-          label="Warranty period"
+          label="保障周期"
           name="period"
           hasFeedback
           rules={[{ required: true }]}
@@ -162,7 +162,7 @@ export default function Put() {
 
         <Form.Item
           name="category"
-          label="Category"
+          label="种类"
           hasFeedback
           rules={[
             {
@@ -171,7 +171,7 @@ export default function Put() {
             },
           ]}
         >
-          <Select placeholder="Please select a category">
+          <Select placeholder="请选择一个种类">
             <Option value="1">重疾险</Option>
             <Option value="2">医疗险</Option>
             <Option value="3">意外险</Option>
@@ -185,13 +185,13 @@ export default function Put() {
         </Form.Item>
         <Form.Item
           name="upload"
-          label="Upload"
+          label="上传产品页图片"
           valuePropName="fileList"
           getValueFromEvent={normFile}
           rules={[
             {
               required: true,
-              message: "Please upload the image to show the insurance!",
+              message: "请上传产品页图片!",
             },
           ]}
         >
@@ -200,7 +200,7 @@ export default function Put() {
             action="http://localhost:8081/api/testUpload"
             listType="picture"
           >
-            <Button icon={<UploadOutlined />}>Click to upload</Button>
+            <Button icon={<UploadOutlined />}>点击上传</Button>
           </Upload>
         </Form.Item>
 
@@ -216,10 +216,10 @@ export default function Put() {
             onClick={submit}
             style={{ marginRight: "8px" }}
           >
-            Submit
+            上架
           </Button>
           <Button htmlType="button" onClick={onReset}>
-            Reset
+            重置
           </Button>
         </Form.Item>
       </Form>

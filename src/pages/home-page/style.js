@@ -158,6 +158,13 @@ export const HomeWrapper = styled.div`
     .insurance-know {
       height: 400px;
       background-color: #fff;
+      .product-more {
+          display: flex;
+          flex-direction: row-reverse;
+          margin: 10px 10px;
+          /* padding-right: 25px; */
+
+        }
     }
   }
 `

@@ -54,18 +54,18 @@ export default function Knows() {
                           </div>
                         </div>
                         <div class="style-footer">
-                          <span>回答帮助了178个人</span>
-                          
+                          {/* <span>回答帮助了178个人</span> */}
+                          <span style={{paddingRight: "20px"}}>推荐产品</span>
+                          <div className="commend-list">
+                            <span className="style-tag">猪猪安全险</span>
+                            <span className="style-tag">短期健康险</span>
+                            <span className="style-tag">长期健康险</span>
+
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </TabPane>
-                <TabPane tab="test1" key="2">
-                  Content of Tab Pane 2
-                </TabPane>
-                <TabPane tab="test2" key="3">
-                  Content of Tab Pane 3
                 </TabPane>
               </Tabs>
             </div>

@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const ProductsWrapper = styled.div`
   .content {
-    height: 125vh;
+    height: 1000px;
     background-color: #fff;
-    width: 85vw;
+    width: 1200px;
     margin: 0 auto;
     .products-list {
-      height: 118vh;
+      height: 935px;
       .product {
         display: flex;
         justify-content: space-between;

@@ -402,7 +402,9 @@ export default function Home() {
         </div>
         <h3 style={{ margin: "10px 0" }}>保险知识</h3>
         <div className="insurance-know">
-          <div className="product-more">更多</div>
+          <div className="product-more">
+          <Link to={"/app/knows"}>更多</Link>
+          </div>
 
           <Collapse defaultActiveKey={["0"]} onChange={callback}>
             {topline.map((item, index) => {

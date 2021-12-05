@@ -95,7 +95,7 @@ export default function Off() {
 
   return (
     <div>
-     <h3 style={{marginBottom:"30px"}}>Products Remove</h3>
+     <h3 style={{marginBottom:"30px"}}>产品下架</h3>
      <Table columns={columns} dataSource={data} />
     </div>
   )

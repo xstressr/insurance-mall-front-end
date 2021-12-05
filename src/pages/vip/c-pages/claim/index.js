@@ -77,7 +77,7 @@ export default function Claim() {
 
   return (
     <div>
-      <h3>Policy claims</h3>
+      <h3>保单理赔</h3>
       <div style={{ width: "500px", margin: "0px auto" }}>
         <Form {...formItemLayout} form={form} name="updatePassword">
           <Form.Item
@@ -86,7 +86,7 @@ export default function Claim() {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "请输入您的保单号!",
               },
             ]}
             hasFeedback
@@ -99,7 +99,7 @@ export default function Claim() {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "请输入报案时间!",
               },
             ]}
             hasFeedback
@@ -121,7 +121,7 @@ export default function Claim() {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "请输入报案地点!",
               },
             ]}
             hasFeedback
@@ -135,7 +135,7 @@ export default function Claim() {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "请描述下事故!",
               },
             ]}
             hasFeedback
@@ -145,7 +145,7 @@ export default function Claim() {
 
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit" onClick={submitClaim}>
-              Submit
+              报案
             </Button>
           </Form.Item>
         </Form>
