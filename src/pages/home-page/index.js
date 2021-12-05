@@ -406,7 +406,7 @@ export default function Home() {
           <Link to={"/app/knows"}>更多</Link>
           </div>
 
-          <Collapse defaultActiveKey={["0"]} onChange={callback}>
+          <Collapse bordered={false} defaultActiveKey={["0"]} onChange={callback}>
             {topline.map((item, index) => {
               return (
                 <Panel header={item.messageTitle} key={index}>

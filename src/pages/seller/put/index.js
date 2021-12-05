@@ -14,6 +14,7 @@ import {
   Row,
   Col,
   message,
+  DatePicker,
 } from "antd";
 import { UploadOutlined, InboxOutlined } from "@ant-design/icons";
 import { insertGoods } from "../../../services/goods";
@@ -47,7 +48,7 @@ export default function Put() {
   };
 
   function submit() {
-    console.log(form.getFieldValue("upload"));
+
     let goodname = form.getFieldValue("goodname");
     let goodintroduce = form.getFieldValue("goodintroduce");
     let goodcontent = form.getFieldValue("goodcontent");
@@ -55,11 +56,23 @@ export default function Put() {
     let goodprice = form.getFieldValue("goodprice");
     let category = form.getFieldValue("category");
     let period = form.getFieldValue("period");
-    console.log(form.getFieldValue("upload"));
+    let minAge = form.getFieldValue("minAge");
+    let maxAge = form.getFieldValue("maxAge");
     let imgUrl;
+    let imgUrl2;
     if (form.getFieldValue("upload")) {
       imgUrl = form.getFieldValue("upload")[0].response.data;
     }
+
+    if (form.getFieldValue("uploadAbbre")) {
+      imgUrl2 = form.getFieldValue("uploadAbbre")[0].response.data;
+    }
+
+    console.log(imgUrl2);
+
+    console.log(minAge);
+    console.log(maxAge);
+
 
     let goodInfo = {
       goodsName: goodname,
@@ -72,6 +85,9 @@ export default function Put() {
       goodsCoverImg: imgUrl,
       deadline: period,
       createUser: localStorage.getItem("seller"),
+      minAge: minAge,
+      maxAge: maxAge,
+      goodsCarousel: imgUrl2,
     };
     insertGoods(goodInfo).then((res) => {
       console.log(res);
@@ -102,7 +118,7 @@ export default function Put() {
             },
           ]}
         >
-          <Input  allowClear />
+          <Input allowClear />
         </Form.Item>
 
         <Form.Item
@@ -116,7 +132,7 @@ export default function Put() {
             },
           ]}
         >
-          <Input  allowClear />
+          <Input allowClear />
         </Form.Item>
         <Form.Item
           label="产品内容"
@@ -156,7 +172,7 @@ export default function Put() {
           hasFeedback
           rules={[{ required: true }]}
         >
-          <Input/>
+          <Input />
           {/* <InputNumber addonAfter={<Option value="CNY">¥</Option>} /> */}
         </Form.Item>
 
@@ -183,6 +199,34 @@ export default function Put() {
             {/* <Option value="7">责任险</Option> */}
           </Select>
         </Form.Item>
+        <Form.Item label="产品覆盖年龄段" required style={{ marginBottom: 0 }}>
+          <Form.Item
+            validateStatus="error"
+            help="请输入产品覆盖最小年龄"
+            name="minAge"
+            style={{ display: "inline-block", width: "100px" }}
+          >
+            <Input />
+          </Form.Item>
+          <span
+            style={{
+              display: "inline-block",
+              width: "24px",
+              lineHeight: "32px",
+              textAlign: "center",
+            }}
+          >
+            -
+          </span>
+          <Form.Item
+            validateStatus="error"
+            help="请输入产品覆盖最大年龄"
+            name="maxAge"
+            style={{ display: "inline-block", width: "100px" }}
+          >
+            <Input />
+          </Form.Item>
+        </Form.Item>
         <Form.Item
           name="upload"
           label="上传产品页图片"
@@ -192,6 +236,26 @@ export default function Put() {
             {
               required: true,
               message: "请上传产品页图片!",
+            },
+          ]}
+        >
+          <Upload
+            name="file"
+            action="http://localhost:8081/api/testUpload"
+            listType="picture"
+          >
+            <Button icon={<UploadOutlined />}>点击上传</Button>
+          </Upload>
+        </Form.Item>
+        <Form.Item
+          name="uploadAbbre"
+          label="上传产品缩略图"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+          rules={[
+            {
+              required: true,
+              message: "请上传产品缩略图!",
             },
           ]}
         >

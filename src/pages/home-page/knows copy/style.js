@@ -5,12 +5,12 @@ export const KnowsWrapper = styled.div`
     text-decoration: none;
   }
   .content {
-    height: 800px;
+    height: 125vh;
     background-color: #fff;
     width: 70vw;
     margin: 0 auto;
     .knows-list {
-      height: 750px;
+      height: 118vh;
       .ant-tabs-nav-list {
         margin-left: 24px;
         .ant-tabs-tab {

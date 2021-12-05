@@ -12,3 +12,15 @@ export function insert(topline) {
     topline
   )
 }
+
+export function getTopList(pageNum, pageSize) {
+  return request.get(
+    "/api/topline/getTopList",
+    {
+      params: {
+        pageNum: pageNum,
+        pageSize: pageSize
+      }
+    }
+  )
+}

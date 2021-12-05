@@ -147,6 +147,14 @@ export default function Insured(props) {
     })
   }
 
+  function judge() {
+    let age = form.getFieldValue("age");
+    let maxAge = detail.maxAge;
+    let minAge = detail.minAge;
+    console.log(age)
+
+  }
+
   return (
     <InsuredWrapper>
       <div>
@@ -217,6 +225,9 @@ export default function Insured(props) {
                       hasFeedback
                     >
                       <Input />
+                      <div style={{marginTop: "20px"}}><Button type="primary" onClick={judge}>是否可以购买</Button></div>
+                     
+                      
                     </Form.Item>
                     <Form.Item
                       name="height"

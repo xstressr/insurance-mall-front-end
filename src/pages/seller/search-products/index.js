@@ -190,7 +190,7 @@ export default function SearchProducts() {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <pre>{text}</pre>
+        <p>{text}</p>
       </Modal>
     </div>
   )

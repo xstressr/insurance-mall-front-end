@@ -1,232 +1,258 @@
 import React from "react";
+import { KnowClaimWrapper } from "./style";
 
 export default function KnowClaim() {
   return (
-    <div style={{ height: '500px', overflowY: 'auto' }}>
-      <div className="detail-ensure-protect">
-        <ul className="ensure-protect-list">
-          <li className="ensure-protect-item ensure-protect-head">
-            <h4 className="protect-item-title diy-f14-bold">投保须知</h4>
-          </li>
-        </ul>
+    <KnowClaimWrapper>
+      <div className="detail-pane pt30 pl30 pb30 detail-ensure-notice">
+        <div className="detail-ensure-protect">
+          <ul className="ensure-protect-list">
+            <li className="ensure-protect-item ensure-protect-head">
+              <h4 className="protect-item-title diy-f14-bold">投保须知</h4>
+            </li>
+          </ul>
 
-        <div className="block-table">
-          <table>
-            <tbody>
-              <tr>
-                <td className="left">犹豫期</td>
+          <div className="block-table">
+            <table>
+              <tbody>
+                <tr>
+                  <td className="left">重要提示</td>
 
-                <td className="right">15天</td>
-              </tr>
+                  <td className="right">
+                    <a
+                      className="diy-font-color"
+                      href="https://files2.huizecdn.com/file1/M00/78/2D/CgUA3GGNuuyAQivxAAFSh58MHMo777.pdf"
+                      target="_blank"
+                    >
+                      费率表
+                    </a>
 
-              <tr>
-                <td className="left">等待期</td>
+                    <a
+                      className="diy-font-color"
+                      href="claimList-101848-104275-20812.html"
+                      target="_blank"
+                    >
+                      保险金赔付比例
+                    </a>
 
-                <td className="right">90天</td>
-              </tr>
+                    <a
+                      className="diy-font-color"
+                      href="https://files2.huizecdn.com/file1/M00/A8/C1/CgUA3GBii_SAG1gDAByZaA0r13w13.html"
+                      target="_blank"
+                    >
+                      客户告知书
+                    </a>
 
-              <tr>
-                <td className="left">重要提示</td>
+                    <a
+                      className="diy-font-color"
+                      href="http://files2.huizecdn.com/file1/M00/37/4F/CgUA3GAT1hiADVMGACP---NRzl0107.pdf"
+                      target="_blank"
+                    >
+                      保单样本
+                    </a>
+                  </td>
+                </tr>
 
-                <td className="right">
-                  <a
-                    className="diy-font-color"
-                    href="https://files2.huizecdn.com/file1/M00/46/F8/CgUA3GFudYuAYpLVAAVVqEEXm4M482.pdf"
-                  >
-                    费率表
-                  </a>
+                <tr>
+                  <td className="left">承保机构</td>
 
-                  <a
-                    className="diy-font-color"
-                    href="https://files2.huizecdn.com/file1/M00/A8/C1/CgUA3GBii_SAG1gDAByZaA0r13w13.html"
-                  >
-                    客户告知书
-                  </a>
+                  <td className="right">
+                    本产品由复星联合健康保险股份有限公司承保，目前复星联合健康保险仅在广东省、北京市、上海市、四川省、江苏省、重庆市辖区域设立有分支机构。本产品销售区域为全国（不含港澳台）。保险公司暂未设立分支机构的区域的客户投保本产品，可能存在服务环节增加、时效相对较长等问题，请投保人对此予以确认后再进行投保。
+                  </td>
+                </tr>
 
-                  <a
-                    className="diy-font-color"
-                    href="http://files2.huizecdn.com/file1/M00/B5/BA/CgUA3GBsBQGAeO9HAC8rIAoAXDI007.pdf"
-                  >
-                    保单样本
-                  </a>
-                </td>
-              </tr>
+                <tr>
+                  <td className="left">线上服务</td>
 
-              <tr>
-                <td className="left">承保机构</td>
+                  <td className="right">
+                    本产品已实现在线咨询、投保、承保、犹豫期退保、报案索赔全流程线上服务。
+                  </td>
+                </tr>
 
-                <td className="right">
-                  本产品由JOJO保险股份有限公司承保，保险公司在浙江、江苏、北京、河北、福建、河南、山东、黑龙江、辽宁、上海、湖北、江西、宁波、广东、厦门、青岛、深圳、大连地区设有分支机构，本产品在保险公司设有分公司的区域销售。A类地区为：
-                  北京、上海、广州、深圳、杭州、南京、武汉（含汉口）、苏州、宁波、厦门、珠海、青岛、南通、东莞、济南、福州、佛山。B类地区为：除A类地区外，其他保险公司已开设分公司的区域。
-                </td>
-              </tr>
+                <tr>
+                  <td className="left">如实告知</td>
 
-              <tr>
-                <td className="left">线上服务</td>
+                  <td className="right">
+                    投保人应当提供真实的投保信息，并就复星联合健康保险提出的询问如实告知。如被保险人健康和职业状况与告知内容不符或者投保人以及被保险人在保单承保后又提出补充告知，且足以影响保险公司决定是否同意承保或者提高保险费率的：
+                    （1）复星联合健康保险有权不同意承保或解除合同；
+                    （2）如发生保险事故，复星联合健康保险不承担赔偿或给付保险金的责任，对于故意不如实告知的，不退还保险费。
+                  </td>
+                </tr>
 
-                <td className="right">
-                  本产品已实现投保咨询、在线投保、在线核保、承保、批改、保全、退保、理赔和投诉处理等全流程线上服务体系
-                </td>
-              </tr>
+                <tr>
+                  <td className="left">费用扣除</td>
 
-              <tr>
-                <td className="left">如实告知</td>
+                  <td className="right">
+                    如果您申请解除合同，自保险公司收到您解除合同申请书时起，保险合同效力终止。保险公司将在30日内退还合同的未满期净保险费。未满期净保险费计算公式为“保险费×（1-35%）×(1-经过天数/保险期间天数)”，经过天数不足一天的按一天计算。
+                  </td>
+                </tr>
 
-                <td className="right">
-                  <strong>
-                    如实告知：订立合同时，您应当就保险公司询问的问题进行如实告知。若您故意或者因重大过失未履行如实告知义务，足以影响保险公司决定是否同意承保或提高保险费率的，保险公司有权解除本合同。若您故意不履行如实告知义务，对于本合同解除前发生的保险事故，保险公司不承担给付保险金的责任，并不退还保险费。若您因重大过失未履行如实告知义务，对保险事故的发生有严重影响的，对于合同解除前发生的保险事故，保险公司不承担给付保险金的责任，但退还您所支付的保险费。
-                  </strong>
-                </td>
-              </tr>
+                <tr>
+                  <td className="left">退保损失</td>
 
-              <tr>
-                <td className="left">退保损失</td>
+                  <td className="right">
+                    本产品无犹豫期。投保人解除合同会遭受一定损失。
+                  </td>
+                </tr>
 
-                <td className="right">
-                  为充分保障您的权益，本合同设有犹豫期。电子保单合同发出次日视为您的合同签收日，自您签收保险合同之日起15日内为犹豫期，具体期限以保险合同载明的期限为准。保险监督管理机构对犹豫期另有规定的，从其规定。您在犹豫期内解除合同的，保险公司扣除工本费后无息退还您的所交保费，如您在犹豫期后解除保险合同，将退还您的现金价值。犹豫期后退保，您将遭受一定的损失。
-                </td>
-              </tr>
+                <tr>
+                  <td className="left">支付和凭证</td>
 
-              <tr>
-                <td className="left">支付和凭证</td>
+                  <td className="right">
+                    本产品为一年期产品，保费由慧择保险经纪代收。
+                    本产品仅提供电子保单，您在投保成功后24小时内，电子保单会发送到您填写的投保人邮箱中，电子保单与纸质保单具有同等法律效力。
+                    本产品仅提供电子发票。
+                  </td>
+                </tr>
 
-                <td className="right">
-                  （1）本产品的支付方式为一次支付全部保险费或分期支付保险费。如您选择一次支付全部保险费，则保险公司将在投保时按您选择的支付方式收取保险费；如您选择分期支付保险费，首期保险费将在投保时候按您选择的支付方式收取，除首期保险费外的其他保险费，保险公司将从约定账户按照合同约定的方式和金额划转。
-                  <br />
-                  （2）理赔款将会在JOJO保险审核通过后打入您提供的指定银行卡账户。
-                  <br />
-                  （3）支付服务保险赔款的支付方式、退保金的支付方式、保险金的支付方式，可通过拨打客服热线95365进行咨询。或者建议您到保险公司线下的分支机构直接咨询。具体地址您可以参考
-                  <a
-                    href="http://www.xintai.com/organization/findOrganizations.do"
-                  >
-                    此链接<strong>（点击查看）</strong>
-                  </a>
-                  。<br />
-                  （4）
-                  本产品提供电子保单，您在投保成功后24小时内，电子保单会发送到您填写的投保人邮箱中，电子保单与纸质保单具有同等法律效力。如您需要发票，请您拨打信泰人寿的官方客服电话95365
-                  索取。
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td className="left">续保提示</td>
+
+                  <td className="right">
+                    本产品为一年期非保证续保产品。保险期间届满，投保人需要重新向保险公司申请投保本产品，并经保险人同意，保险公司按续保时重新厘定的费率标准收取新续保合同的保险费。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="clearfix notice-more-table">
+            <p>其余须知：</p>
+            <ol className="f12">
+              <li>
+                <strong>1. </strong>
+                本产品承保年龄为出生满30天-65周岁（含30天、65周岁）
+              </li>
+
+              <li>
+                <strong>2. </strong>
+                本产品仅承保1-3类职业人员（不承保家庭主妇/夫、离退休人员（无兼职）、待业人员、下岗人员）。凡从事高空作业工作人员均不可作为被保险人投保本产品。职业类别参照《复星联合健康保险职业分类表》，判定职业类别以出险时被保险人的职业类别为准。
+              </li>
+
+              <li>
+                <strong>3. </strong>
+                按中国保监会规定,10周岁以下的未成年人累计身故保险金额不得超过人民币20万元;10至17周岁的未成年人累计身故保险金额不得超过人民币50万元。保险公司仅于保监发[2015]90号文规定的未成年人死亡保险金限额内承担保险责任。
+              </li>
+
+              <li>
+                <strong>4. </strong>本产品不支持外籍人士购买。
+              </li>
+
+              <li>
+                <strong>5. </strong>
+                同一被保险人在同一保险期间内，0-9周岁最多投保意外身故/伤残：20万元，10-65周岁最多投保意外身故/伤残：50万元，多投部分无效。
+              </li>
+
+              <li>
+                <strong>6. </strong>本产品仅提供电子保单。
+              </li>
+
+              <li>
+                <strong>7. </strong>
+                本保单扩展赔付新冠肺炎（COVID-19）身故保险金：本保险合同生效后，被保险人经医院确诊感染新型冠状病毒，并因此导致被保险人身故的，
+                适用意外伤害责任。
+              </li>
+
+              <li>
+                <strong>8. </strong>请认真阅读并理解《
+                <a
+                  href="http://files2.huizecdn.com/file1/M00/E1/F8/CgUA3GCI_vGAMg53AAZBqJwNNJs234.pdf"
+                  target="_blank"
+                >
+                  <strong>投保须知</strong>
+                </a>
+                》。
+              </li>
+
+              <li>
+                <strong>9. </strong>【释义】
+                <br />
+                （1）医院：指国家各级卫生主管部门公布的感染新型冠状病毒的医疗救治定点医院。
+                <br />
+                （2）感染新型冠状病毒：新型冠状病毒是指世界卫生组织（WHO）命名的“2019新型冠状病毒”（简称：2019-nCov),感染新型冠状病毒需由国家卫生行政机关指定的医院或者国家正式卫生检疫机构确诊。
+                <br />
+                （3）中高风险地区：指根据“国务院客户端”APP及各地市疫情防控中心公告对全国发布的中高风险地区目录内地区以及所有中国境外地区。
+                <br />
+                （4）强制隔离：指根据被保险人所在地国家的政府监管当局或医院为保护健康人群免受病源感染，依据该国法律法规或者其他相关规定，对被保险人所采取的要求被保险人于指定场所进行定期医学隔离观察，从而切断病源与易感者之间的联系的一项强制措施。
+                <br />
+                （5）强制隔离日数：是指被保险人实际被强制隔离的时间持续达到24小时或以上，每满24小时为一日。强制隔离日数以当地防疫部门或保险公司认可的医疗机构出具的证明文件为准。
+                <br />
+                （6）新冠肺炎：指经保险公司指定或认可的医疗机构采用国家卫健委《新型冠状病毒肺炎诊疗方案》最新版本的诊断标准（包含轻型、普通型、重型和危重型）确诊的疾病(COVID-19)。
+                <br />
+                （7）新冠肺炎轻型或普通型：指经保险公司指定或认可的医疗机构采用国家卫健委《新型冠状病毒肺炎诊疗方案》的诊断标准确诊为轻型和普通型疾病的情况。
+                <br />
+                （8）新冠肺炎重症或危重症疾病：指经保险公司指定或认可的医疗机构采用国家卫健委《新型冠状病毒肺炎诊疗方案》的诊断标准确诊为重型和危重型疾病的情况。
+                <br />
+              </li>
+
+              <li>
+                <strong>10. </strong>新冠肺炎身故保险金责任免除
+                <br />
+                在本保险合同生效之前，被保险人存在以下情形的，保险公司不承担新型冠状病毒扩展责任：
+                <br />
+                （1）已经确诊感染或疑似感染新型冠状病毒的；
+                <br />
+                （2）因有与新型冠状病毒肺炎病人接触史，尚在医学隔离或医学观察中的。
+                <br />
+              </li>
+
+              <li>
+                <strong>11. </strong>强制隔离每日津贴保险金责任免除
+                <br />
+                被保险人因任何下列情形而遭受的损失，或具备任一下列情形的，保险公司不承担赔偿责任：
+                <br />
+                （1）在保险合同生效前，被保险人所在地区已被国家确定为中高风险地区或被当地政府宣布为全域封闭管理地区且保单生效时仍属于上述两类地区；
+                <br />
+                （2）被保险人未遵守防疫规定而主动前往或离开已知的中高风险地区或全域封闭管理地区导致被强制隔离；
+                <br />
+                （3）在保险合同生效前，被保险人已经确诊感染新型冠状病毒或疑似感染新型冠状病毒或因有与新冠肺炎病人接触史，尚在医学隔离或医学观察中。
+                <br />
+                （4）各地政府或防疫部门要求的对来自非中高风险地区或全域封闭管理地区的返乡或探亲人员的集中隔离或居家隔离。
+              </li>
+
+              <li>
+                <strong>12. </strong>新冠肺炎确诊津贴保险金责任免除
+                <br />
+                在保险合同生效前，被保险人已经确诊感染新型冠状病毒或疑似感染新型冠状病毒或因有与新冠肺炎病人接触史，尚在医学隔离或医学观察中。
+              </li>
+
+              <li>
+                <strong>13. </strong>
+                本产品同一被保险人仅限投保一单，强制隔离津贴日额为200元/日（投保多份隔离津贴不叠加），强制隔离时间超过24小时后未满24小时者，按照一日计。每一保单最高给付的强制隔离津贴日数以30日为限。
+              </li>
+            </ol>
+          </div>
         </div>
 
-        <div className="clearfix notice-more-table">
-          <p>其余须知：</p>
-          <ol className="f12">
-            <li>
-              <strong>1. </strong>投保前请您仔细阅读：
-              <a
-                href="https://files2.huizecdn.com/file1/M00/62/FA/CgUA3GGCKYeAbt0QAAV7gR32EMk869.pdf"
-              >
-                <strong>
-                  <span >《人身保险投保提示书》</span>
-                </strong>
-              </a>
-              ，
-              <a
-                href="https://files2.huizecdn.com/file1/M00/10/96/CgUA3GFBn0eAZMQkAAMMm-bgIis262.pdf"
-              >
-                <strong>
-                  <span>投保须知</span>
-                </strong>
-              </a>
-              。
+        <div className="detail-ensure-protect mt30">
+          <ul className="ensure-protect-list">
+            <li className="ensure-protect-item ensure-protect-head">
+              <h4 className="protect-item-title diy-f14-bold">保险条款</h4>
             </li>
+          </ul>
+          <div className="block-table clause-table">
+            <table>
+              <tbody>
+                <tr className="title-tr">
+                  <td className="left">主条款</td>
+                  <td className="right"></td>
+                </tr>
 
-            <li>
-              <strong>2. </strong>
-              本产品支持被保险人出生满28天-55周岁（含28天、55周岁），从事1-4类职业，身体健康的自然人投保。投保人年龄需为18-55周岁（含18、55周岁），若投、被保险人为非同一人，投保人可选择附加《信泰附加投保人豁免保险费A款重大疾病保险》，且交费期满时年龄需＜70周岁。
-            </li>
-
-            <li>
-              <strong>3. </strong>投保人与被保险人关系：
-              <br />
-              （1）被保险人年龄＜18周岁，仅限父母投保；
-              <br />
-              （2）被保险人年龄≥18周岁，选择身故责任时，仅限本人投保，未选择身故责任时，允许本人、配偶、父母、子女关系投保。
-              <br />
-            </li>
-
-            <li>
-              <strong>4. </strong>
-              本产品最低基本保额限制为5万元，最高基本限制详见
-              <a
-                href="http://files2.huizecdn.com/file1/M00/7B/41/CgUA3GBB1deAaAOIAACGgZto4m0579.pdf"
-                target="_blank"
-              >
-                <strong>
-                  <span>附件（点击可查看）</span>
-                </strong>
-              </a>
-              。
-            </li>
-
-            <li>
-              <strong>5. </strong>
-              本产品针对不同缴费期限支持的投保年龄，具体投保年龄请点击
-              <a
-                href="http://files2.huizecdn.com/file1/M00/77/8A/CgUA3GA_h2WAWe7MAABuQJm3-DI590.pdf"
-                target="_blank"
-              >
-                <strong>
-                  <span>本链接</span>
-                </strong>
-              </a>
-              。
-            </li>
-
-            <li>
-              <strong>6. </strong>本产品不支持外籍人士购买。
-            </li>
-
-            <li>
-              <strong>7. </strong>本产品仅限中国税收居民购买。
-            </li>
-
-            <li>
-              <strong>8. </strong>
-              本产品成年学生（指18周岁以上的无固定收入的全职学生）最高基本保额为33万元，无固定职业者（包括家庭主夫/妇、无业人员、退休后未从业人员）最高基本保额为20万元。
-            </li>
-
-            <li>
-              <strong>9. </strong>
-              本现金价值表仅为保单利益演示使用，具体内容以保险合同约定为准。
-            </li>
-
-            <li>
-              <strong>10. </strong>
-              <strong>
-                本产品可提供抬头为投保人的普通机打发票，并由保险公司免费寄送至您投保时所填写的联系地址，如有疑问可拨打保险公司客服电话95365咨询。
-              </strong>
-            </li>
-
-            <li>
-              <strong>11. </strong>本产品提供重疾绿色通道服务，详情点击“
-              <a
-                href="http://files2.huizecdn.com/file1/M00/04/7F/CgUA3GCiKuKACT8yABY98h2J5RU54.html"
-                target="_blank"
-              >
-                <strong>
-                  <span >
-                    信泰人寿疾病绿色通道医疗服务手册
-                  </span>
-                </strong>
-              </a>
-              ”查看。具体享有的服务类别，请见点击“
-              <a
-                href="http://files2.huizecdn.com/file1/M00/04/80/CgUA3GCiKwiAZkCSAAOpme2rCw477.html"
-                target="_blank"
-              >
-                <strong>
-                  <span >服务类别查询</span>
-                </strong>
-              </a>
-              ”查询。
-            </li>
-          </ol>
+                <tr>
+                  <td className="left">
+                    <a href="./provision/detail-20811.html" target="_blank">
+                      复星联合爱无忧意外伤害保险条款
+                    </a>
+                  </td>
+                  <td className="right">
+                    复星联合健康保险（2019）意外伤害保险010号/复星联合健康保险发【2019】98号
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+    </KnowClaimWrapper>
   );
 }

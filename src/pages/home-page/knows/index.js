@@ -11,15 +11,31 @@ import {
 } from "antd";
 import { JYFooter } from "../../../components/footer";
 import { KnowsWrapper } from "./style";
+import { getTopList } from "../../../services/topline";
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 const { TabPane } = Tabs;
 
 export default function Knows() {
+  const [total, setTotal] = useState(0);
+  const [data, setData] = useState([]);
   useEffect(() => {
     console.log("test");
+    getTopList(1, 5).then((res) => {
+      console.log(res);
+      setTotal(res.total);
+      setData(res.list);
+    });
   }, []);
+
+  function onChange(page, pageSize) {
+    getTopList(page, pageSize).then((res) => {
+      console.log(res);
+      setData(res.list);
+    });
+    console.log("onChange");
+  }
 
   return (
     <KnowsWrapper>
@@ -38,39 +54,46 @@ export default function Knows() {
               <Tabs defaultActiveKey="1">
                 <TabPane tab="全部" key="1">
                   <div className="style-list">
-                    <div className="style-listItem">
-                      <div className="style-box">
-                        <a className="style-title">
-                          <h3>投保信息填错了，需要修改吗？</h3>
-                        </a>
-                        <div className="style-main">
-                          <div className="style-twoRows">
-                            <a>
-                              <div class="style-content">
-                                为避免后续理赔、续保等服务受影响，建议及时联系保险公司进行修改。但涉及保额、保障期限、保障时间等，签订保险合同后是不能修改的。
-                                信息变更资料多流程繁琐，建议大家在填写个人信息的时候尽量细心，避免日后的麻烦。
-                              </div>
+                    {data.map((item) => {
+                      return (
+                        <div className="style-listItem">
+                          <div className="style-box">
+                            <a className="style-title">
+                              <h3>{item.messageTitle}</h3>
                             </a>
+                            <div className="style-main">
+                              <div className="style-twoRows">
+                                <a>
+                                  <div class="style-content">
+                                    {item.messageContent}
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            {/* <div class="style-footer">
+                              <span style={{ paddingRight: "20px" }}>
+                                推荐产品
+                              </span>
+                              <div className="commend-list">
+                                <span className="style-tag">猪猪安全险</span>
+                                <span className="style-tag">短期健康险</span>
+                                <span className="style-tag">长期健康险</span>
+                              </div>
+                            </div> */}
                           </div>
                         </div>
-                        <div class="style-footer">
-                          {/* <span>回答帮助了178个人</span> */}
-                          <span style={{paddingRight: "20px"}}>推荐产品</span>
-                          <div className="commend-list">
-                            <span className="style-tag">猪猪安全险</span>
-                            <span className="style-tag">短期健康险</span>
-                            <span className="style-tag">长期健康险</span>
-
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                      );
+                    })}
                   </div>
                 </TabPane>
               </Tabs>
             </div>
             <div className="pagination">
-              <Pagination defaultCurrent={1} total={50} />
+              <Pagination
+                defaultCurrent={1}
+                total={total}
+                onChange={onChange}
+              />
             </div>
           </Content>
           <JYFooter></JYFooter>

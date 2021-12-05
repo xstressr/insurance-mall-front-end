@@ -49,7 +49,7 @@ export default function Products() {
                     <div className="left-box">
                       <div className="img-box">
                         <img
-                          src="https://files.huizecdn.com/file1/M00/65/04/CgUA3F5wahuAeMENAAC9_Ieqbqs348.jpg"
+                          src={item.goodsCarousel}
                           alt=""
                         />
                         <div className="style_cover">{item.goodsName}</div>
@@ -70,7 +70,7 @@ export default function Products() {
                           <div className="style-item">
                             <UserOutlined style={{ marginRight: "14px" }} />
                             <span className="style-label">投保年龄</span>
-                            <span className="style-value">0周岁-65周岁</span>
+                            <span className="style-value">{item.minAge+"周岁-"+item.maxAge+"周岁"}</span>
                           </div>
                           <div className="style-item">
                             <UserOutlined style={{ marginRight: "14px" }} />

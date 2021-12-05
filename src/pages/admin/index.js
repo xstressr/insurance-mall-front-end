@@ -38,12 +38,16 @@ class Admin extends Component {
         <Header className="header">
             <div className="logo" />
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-              <Menu.Item key="1" icon={<AppstoreOutlined />}>nav 1</Menu.Item>
-              <Menu.Item key="2" icon={<SettingOutlined />}>nav 2</Menu.Item>
-              <Menu.Item key="3" icon={<ArrowUpOutlined />}>
-                <NavLink to={"/login"} onClick={()=>this.removeLocalStorage()}>Exit</NavLink>
+              <Menu.Item key="1" icon={<AppstoreOutlined />}>
+              <NavLink to={"/"} >主页</NavLink>
               </Menu.Item>
-            </Menu>            
+
+              <Menu.Item key="3" icon={<ArrowUpOutlined />} >
+              <NavLink to={"/"} onClick={()=>this.removeLocalStorage()}>退出</NavLink>
+
+                
+              </Menu.Item>
+            </Menu>          
           </Header>
           <Layout>
             <Sider width={200} className="site-layout-background">
