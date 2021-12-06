@@ -22,6 +22,7 @@ import SearchClaim from "../pages/vip/c-pages/search-claim";
 import AuditClaim from "../pages/seller/audit-claim";
 import Products from "../pages/home-page/products";
 import Knows from "../pages/home-page/knows";
+import ProductsType from "../pages/home-page/products-type";
 
 
 const routes = [
@@ -55,6 +56,10 @@ const routes = [
   {
     path: "/app/products",
     component: Products
+  },
+  {
+    path: "/app/productsType",
+    component: ProductsType
   },
   {
     path: "/app/knows",

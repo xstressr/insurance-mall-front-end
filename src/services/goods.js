@@ -56,11 +56,13 @@ export function queryGoodDetail(goodname) {
   })
 }
 
-export function queryAllByType(type) {
+export function queryAllByType(type, pageNum, pageSize) {
   return request.get("/api/goods/getAllByType",
   {
     params: {
-    type: type
+    type: type,
+    pageNum: pageNum,
+    pageSize: pageSize
    }
   })
 }

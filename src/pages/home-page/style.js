@@ -1,19 +1,17 @@
 import styled from "styled-components";
 
 export const HomeWrapper = styled.div`
-  
   background-color: rgb(246, 248, 252);
-  
 
   .header {
     height: 30px;
-    background-color: rgb(43,50,62);
-    
+    background-color: rgb(43, 50, 62);
+
     .header-top {
-    width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
+      width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
     }
 
     .header-left {
@@ -29,10 +27,9 @@ export const HomeWrapper = styled.div`
           width: 1px;
           margin: 16px 12px 0;
         }
-        
-        .tooltipBox:hover .myTooltip  
-        {
-            visibility: visible;
+
+        .tooltipBox:hover .myTooltip {
+          visibility: visible;
         }
 
         .myTooltip {
@@ -48,19 +45,16 @@ export const HomeWrapper = styled.div`
             height: 32px;
             line-height: 32px;
             text-align: center;
-
           }
         }
-
-        
       }
-      
+
       a {
         color: rgb(100, 110, 120);
       }
 
       a:hover {
-        color: #fff
+        color: #fff;
       }
     }
 
@@ -68,14 +62,12 @@ export const HomeWrapper = styled.div`
       font-size: 12px;
       color: rgb(95, 102, 115);
       line-height: 30px;
-      
+
       a:hover {
-        color: #fff
+        color: #fff;
       }
     }
   }
-
-  
 
   .header-bottom {
     width: 1200px;
@@ -86,7 +78,6 @@ export const HomeWrapper = styled.div`
     /* margin: 10px 0; */
     margin-bottom: 10px;
     margin-top: 10px;
-
   }
 
   .carousel {
@@ -106,15 +97,32 @@ export const HomeWrapper = styled.div`
 
       .content-top-left {
         width: 890px;
-        height: 450px;
+        height: 930px;
         background-color: #fff;
         border-radius: 15px;
 
         .product-more {
           display: flex;
           flex-direction: row-reverse;
-          padding-right: 25px
-
+          padding-right: 25px;
+        }
+        .style-money {
+          position: absolute;
+          bottom: 10px;
+          color: #ff5521;
+          font-size: 18px;
+          font-weight: 700;
+          margin-top: 20px;
+          img {
+            width: 7px;
+            height: 11px;
+          }
+          .style-text {
+            font-size: 12px;
+            margin-left: 2px;
+            position: relative;
+            top: -2px;
+          }
         }
 
         .top3 {
@@ -138,17 +146,16 @@ export const HomeWrapper = styled.div`
             align-items: center;
             justify-content: center;
           }
-          
-          .content-top-right-header{
+
+          .content-top-right-header {
             text-align: center;
             margin: 10px 0;
           }
-          
         }
         .insurance-title {
-            display:flex;
-            justify-content: space-between
-          }
+          display: flex;
+          justify-content: space-between;
+        }
       }
       .margin-bottom {
         margin-bottom: 10px;
@@ -159,12 +166,11 @@ export const HomeWrapper = styled.div`
       height: 400px;
       background-color: #fff;
       .product-more {
-          display: flex;
-          flex-direction: row-reverse;
-          margin: 10px 10px;
-          /* padding-right: 25px; */
-
-        }
+        display: flex;
+        flex-direction: row-reverse;
+        margin: 10px 10px;
+        /* padding-right: 25px; */
+      }
     }
   }
-`
+`;

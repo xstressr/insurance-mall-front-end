@@ -29,6 +29,8 @@ import { queryAllCarousel } from "../../services/carousel";
 
 const { Panel } = Collapse;
 
+const { Meta } = Card;
+
 function callback(key) {
   console.log(key);
 }
@@ -68,16 +70,16 @@ export default function Home() {
   }
 
   function getAllByType(type) {
-    queryAllByType(type).then((res) => {
+    queryAllByType(type, 1, 8).then((res) => {
       switch (type) {
         case 3:
-          setAccident(res.data);
+          setAccident(res.data.list);
           break;
         case 5:
-          setTravel(res.data);
+          setTravel(res.data.list);
           break;
         case 8:
-          setWealth(res.data);
+          setWealth(res.data.list);
           break;
         default:
           break;
@@ -161,21 +163,32 @@ export default function Home() {
       </div>
       <div className="carousel">
         <Carousel autoplay>
-          {carousel.map((item) => {
-            return (
-              <div>
-                <h3 style={contentStyle}>
-                  <div>{item.insuranceName}</div>
-                  <div style={{ textAlign: "center" }}>
-                    <Link to={`/app/product?productCode=${item.insuranceName}`}>
-                      <img src={item.imgurl} alt={item.insuranceName} 
-                      style={{margin: "0 auto", width: "600px", height: "350px"}}></img>
-                    </Link>
+          {carousel != null
+            ? carousel.map((item) => {
+                return (
+                  <div>
+                    <h3 style={contentStyle}>
+                      <div>{item.insuranceName}</div>
+                      <div style={{ textAlign: "center" }}>
+                        <Link
+                          to={`/app/product?productCode=${item.insuranceName}`}
+                        >
+                          <img
+                            src={item.imgurl}
+                            alt={item.insuranceName}
+                            style={{
+                              margin: "0 auto",
+                              width: "600px",
+                              height: "350px",
+                            }}
+                          ></img>
+                        </Link>
+                      </div>
+                    </h3>
                   </div>
-                </h3>
-              </div>
-            );
-          })}
+                );
+              })
+            : null}
         </Carousel>
       </div>
 
@@ -185,107 +198,176 @@ export default function Home() {
             <div className="content-top-left-title">
               <Tabs defaultActiveKey="1">
                 <TabPane tab="人身保障" key="1">
+                  <div className="product-more">
+                    <Link to={"/app/productsType?type=3"}>更多</Link>
+                  </div>
                   {/* <Skeleton active/> */}
                   <Row justify="center">
-                    {accident.map((item, index) => {
-                      return (
-                        <React.Fragment>
+                    {accident != null
+                      ? accident.map((item, index) => {
+                          return (
+                            <React.Fragment>
+                          <Link
+                                      to={`/app/product?productCode=${item.goodsName}`}
+                                      style={{textDecoration:"none"}}
+                                    >
                           <Col
-                            offset={index % 3 != 0 ? 1 : 0}
-                            style={{ marginBottom: "20px" }}
+                            // offset={index % 3 != 0 ? 1 : 0}
+                            style={{ margin: "10px 10px 10px 0" }}
                           >
                             <Card
-                              style={{ width: 250 }}
-                              className={index < 3 ? "top3" : null}
+                              hoverable
+                              style={{ width: 200, height:383 }}
+                              cover={
+                                <img
+                                  style={{ width: "200px", height: "200px" }}
+                                  alt="example"
+                                  src={item.goodsCarousel}
+                                />
+                              }
+                              // className={index < 3 ? "top3" : null}
                             >
-                              {index < 3 ? (
-                                <React.Fragment>
-                                  <HeartTwoTone twoToneColor="#eb2f96" />
-                                  <span style={{ color: "#eb2f96" }}> hot</span>
-                                </React.Fragment>
-                              ) : null}
-                              <p>
-                                <Link
-                                  to={`/app/product?productCode=${item.goodsName}`}
-                                >
-                                  {item.goodsName}
-                                </Link>
-                              </p>
-                              <span>销量 {item.total}</span>
+                              <Meta
+                                title={item.goodsName}
+                                description={item.goodsIntro}
+                              />
+                              
+                              <div className="style-money">
+                                <img
+                                  src="//img.huizecdn.com/hz/www/page/core_pc/planning_detail_money_icon.png"
+                                  alt=""
+
+                                />
+                                <span>{item.sellingPrice}</span>
+                                <span className="style-text">起</span>
+                                <span style={{marginLeft:"10px"}}>销量 {item.total}</span>
+                                {index < 3 ? <HeartTwoTone twoToneColor="#eb2f96" style={{marginLeft:"10px"}}/>:null}
+                               
+                              </div>
+
+                              
                             </Card>
                           </Col>
+                          </Link>
                         </React.Fragment>
-                      );
-                    })}
+                          );
+                        })
+                      : null}
                   </Row>
                 </TabPane>
                 <TabPane tab="财富保险" key="2">
+                  <div className="product-more">
+                    <Link to={"/app/productsType?type=8"}>更多</Link>
+                  </div>
                   {/* <Skeleton active/> */}
                   <Row justify="center">
-                    {wealth.map((item, index) => {
-                      return (
-                        <React.Fragment>
+                    {wealth != null
+                      ? wealth.map((item, index) => {
+                          return (
+                            <React.Fragment>
+                          <Link
+                                      to={`/app/product?productCode=${item.goodsName}`}
+                                      style={{textDecoration:"none"}}
+                                    >
                           <Col
-                            offset={index % 3 != 0 ? 1 : 0}
-                            style={{ marginBottom: "20px" }}
+                            // offset={index % 3 != 0 ? 1 : 0}
+                            style={{ margin: "10px 10px 10px 0" }}
                           >
                             <Card
-                              style={{ width: 250 }}
-                              className={index < 3 ? "top3" : null}
+                              hoverable
+                              style={{ width: 200, height:383 }}
+                              cover={
+                                <img
+                                  style={{ width: "200px", height: "200px" }}
+                                  alt="example"
+                                  src={item.goodsCarousel}
+                                />
+                              }
+                              // className={index < 3 ? "top3" : null}
                             >
-                              {index < 3 ? (
-                                <React.Fragment>
-                                  <HeartTwoTone twoToneColor="#eb2f96" />
-                                  <span style={{ color: "#eb2f96" }}> hot</span>
-                                </React.Fragment>
-                              ) : null}
-                              <p>
-                                <Link
-                                  to={`/app/product?productCode=${item.goodsName}`}
-                                >
-                                  {item.goodsName}
-                                </Link>
-                              </p>
-                              <span>销量 {item.total}</span>
+                              <Meta
+                                title={item.goodsName}
+                                description={item.goodsIntro}
+                              />
+                              
+                              <div className="style-money">
+                                <img
+                                  src="//img.huizecdn.com/hz/www/page/core_pc/planning_detail_money_icon.png"
+                                  alt=""
+
+                                />
+                                <span>{item.sellingPrice}</span>
+                                <span className="style-text">起</span>
+                                <span style={{marginLeft:"10px"}}>销量 {item.total}</span>
+                                {index < 3 ? <HeartTwoTone twoToneColor="#eb2f96" style={{marginLeft:"10px"}}/>:null}
+                               
+                              </div>
+
+                              
                             </Card>
                           </Col>
+                          </Link>
                         </React.Fragment>
-                      );
-                    })}
+                          );
+                        })
+                      : null}
                   </Row>
                 </TabPane>
                 <TabPane tab="旅游出行" key="3">
+                  <div className="product-more">
+                    <Link to={"/app/productsType?type=5"}>更多</Link>
+                  </div>
                   <Row justify="center">
-                    {travel.map((item, index) => {
-                      return (
-                        <React.Fragment>
+                    {travel != null
+                      ? travel.map((item, index) => {
+                          return (
+                            <React.Fragment>
+                          <Link
+                                      to={`/app/product?productCode=${item.goodsName}`}
+                                      style={{textDecoration:"none"}}
+                                    >
                           <Col
-                            offset={index % 3 != 0 ? 1 : 0}
-                            style={{ marginBottom: "20px" }}
+                            // offset={index % 3 != 0 ? 1 : 0}
+                            style={{ margin: "10px 10px 10px 0" }}
                           >
                             <Card
-                              style={{ width: 250 }}
-                              className={index < 3 ? "top3" : null}
+                              hoverable
+                              style={{ width: 200, height:383 }}
+                              cover={
+                                <img
+                                  style={{ width: "200px", height: "200px" }}
+                                  alt="example"
+                                  src={item.goodsCarousel}
+                                />
+                              }
+                              // className={index < 3 ? "top3" : null}
                             >
-                              {index < 3 ? (
-                                <React.Fragment>
-                                  <HeartTwoTone twoToneColor="#eb2f96" />
-                                  <span style={{ color: "#eb2f96" }}> hot</span>
-                                </React.Fragment>
-                              ) : null}
-                              <p>
-                                <Link
-                                  to={`/app/product?productCode=${item.goodsName}`}
-                                >
-                                  {item.goodsName}
-                                </Link>
-                              </p>
-                              <span>销量 {item.total}</span>
+                              <Meta
+                                title={item.goodsName}
+                                description={item.goodsIntro}
+                              />
+                              
+                              <div className="style-money">
+                                <img
+                                  src="//img.huizecdn.com/hz/www/page/core_pc/planning_detail_money_icon.png"
+                                  alt=""
+
+                                />
+                                <span>{item.sellingPrice}</span>
+                                <span className="style-text">起</span>
+                                <span style={{marginLeft:"10px"}}>销量 {item.total}</span>
+                                {index < 3 ? <HeartTwoTone twoToneColor="#eb2f96" style={{marginLeft:"10px"}}/>:null}
+                               
+                              </div>
+
+                              
                             </Card>
                           </Col>
+                          </Link>
                         </React.Fragment>
-                      );
-                    })}
+                          );
+                        })
+                      : null}
                   </Row>
                 </TabPane>
                 <TabPane tab="全部产品" key="4">
@@ -296,31 +378,48 @@ export default function Home() {
                     {data.map((item, index) => {
                       return (
                         <React.Fragment>
+                          <Link
+                                      to={`/app/product?productCode=${item.goodsName}`}
+                                      style={{textDecoration:"none"}}
+                                    >
                           <Col
-                            offset={index % 3 != 0 ? 1 : 0}
-                            style={{ marginBottom: "20px" }}
+                            // offset={index % 3 != 0 ? 1 : 0}
+                            style={{ margin: "10px 10px 10px 0" }}
                           >
                             <Card
-                              style={{ width: 250 }}
-                              className={index < 3 ? "top3" : null}
+                              hoverable
+                              style={{ width: 200, height:383 }}
+                              cover={
+                                <img
+                                  style={{ width: "200px", height: "200px" }}
+                                  alt="example"
+                                  src={item.goodsCarousel}
+                                />
+                              }
+                              // className={index < 3 ? "top3" : null}
                             >
-                              {index < 3 ? (
-                                <React.Fragment>
-                                  <HeartTwoTone twoToneColor="#eb2f96" />
-                                  <span style={{ color: "#eb2f96" }}> hot</span>
-                                </React.Fragment>
-                              ) : null}
+                              <Meta
+                                title={item.goodsName}
+                                description={item.goodsIntro}
+                              />
+                              
+                              <div className="style-money">
+                                <img
+                                  src="//img.huizecdn.com/hz/www/page/core_pc/planning_detail_money_icon.png"
+                                  alt=""
 
-                              <p>
-                                <Link
-                                  to={`/app/product?productCode=${item.goodsName}`}
-                                >
-                                  {item.goodsName}
-                                </Link>
-                              </p>
-                              <span>销量 {item.total}</span>
+                                />
+                                <span>{item.sellingPrice}</span>
+                                <span className="style-text">起</span>
+                                <span style={{marginLeft:"10px"}}>销量 {item.total}</span>
+                                {index < 3 ? <HeartTwoTone twoToneColor="#eb2f96" style={{marginLeft:"10px"}}/>:null}
+                               
+                              </div>
+
+                              
                             </Card>
                           </Col>
+                          </Link>
                         </React.Fragment>
                       );
                     })}
@@ -403,10 +502,14 @@ export default function Home() {
         <h3 style={{ margin: "10px 0" }}>保险知识</h3>
         <div className="insurance-know">
           <div className="product-more">
-          <Link to={"/app/knows"}>更多</Link>
+            <Link to={"/app/knows"}>更多</Link>
           </div>
 
-          <Collapse bordered={false} defaultActiveKey={["0"]} onChange={callback}>
+          <Collapse
+            bordered={false}
+            defaultActiveKey={["0"]}
+            onChange={callback}
+          >
             {topline.map((item, index) => {
               return (
                 <Panel header={item.messageTitle} key={index}>
