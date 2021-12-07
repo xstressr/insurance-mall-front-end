@@ -43,8 +43,12 @@ export const sellerMenu = [
 //管理员功能
 export const AdminMenu = [
   {
-    title: "新产品审核",
+    title: "新产品审计",
     link: "/admin/audit"
+  },
+  {
+    title: "平台上架产品",
+    link: "/admin/searchUp"
   },
   {
     title: "主页信息发布",

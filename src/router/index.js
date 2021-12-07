@@ -10,7 +10,7 @@ import Claim from "../pages/vip/c-pages/claim";
 import Put from "../pages/seller/put";
 import Off from "../pages/seller/off";
 import SearchProducts from "../pages/seller/search-products";
-import Audit from "../pages/admin/audit";
+
 import InfoPublish from "../pages/admin/info-publish";
 import Product from "../pages/home-page/product";
 import ClaimInfo from "../components/claim-info";
@@ -23,6 +23,8 @@ import AuditClaim from "../pages/seller/audit-claim";
 import Products from "../pages/home-page/products";
 import Knows from "../pages/home-page/knows";
 import ProductsType from "../pages/home-page/products-type";
+import SearchUp from "../pages/admin/search-up";
+import Audit from "../pages/admin/audit";
 
 
 const routes = [
@@ -85,6 +87,10 @@ const routes = [
     path: "/admin",
     component: Admin,
     routes: [
+      {
+        path: "/admin/searchUp",
+        component: SearchUp
+      },
       {
         path: "/admin/audit",
         component: Audit

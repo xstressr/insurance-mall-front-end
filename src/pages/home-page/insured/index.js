@@ -72,6 +72,7 @@ export default function Insured(props) {
 
   function addInsurer() {
     let name = form.getFieldValue("name");
+    console.log(name)
     let idno = form.getFieldValue("idno");
     let age = form.getFieldValue("age");
     let height = form.getFieldValue("height");

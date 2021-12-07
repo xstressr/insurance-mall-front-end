@@ -119,21 +119,12 @@ export default function SearchProducts() {
       render: (test) => {
         return (
           <Space size="middle">
-            <a>{category[test]}</a>
+            <span>{category[test]}</span>
           </Space>
         )
       }
     },
-    {
-      title: '保险图片',
-      dataIndex: 'goodsCoverImg',
-      key: 'img',
-      render: (img) => (
-        <Space size="middle">
-          <a href={img}>图片</a>
-        </Space>
-      ),
-    },
+    
     {
       title: '保险状态',
       dataIndex: 'goodsSellStatus',
@@ -183,7 +174,7 @@ export default function SearchProducts() {
   return (
     <div>
      <h3 style={{marginBottom:"30px"}}>产品查询</h3>
-     <Table columns={columns} dataSource={data} scroll={{ x: 1300 }}/>
+     <Table columns={columns} dataSource={data} scroll={{ x: 1000 }}/>
      <Modal
         title="描述详情"
         visible={isModalVisible}

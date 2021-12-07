@@ -20,7 +20,7 @@ const status = {
   
 }
 
-export default function Audit() {
+export default function SearchUp() {
   const [data, setData] = useState([])
   const [text, setText] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
