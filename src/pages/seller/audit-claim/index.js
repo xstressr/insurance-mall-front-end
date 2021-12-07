@@ -75,16 +75,16 @@ export default function AuditClaim() {
 
   const columns = [
     {
-      title: '保单号',
-      dataIndex: 'guaranteeNo',
+      title: '报案号',
+      dataIndex: 'claimNo',
       key: 'no',
-      render: text => <a>{text}</a>,
+      render: text => <span>{text}</span>,
     },
     {
       title: '报案人',
       dataIndex: 'submitter',
       key: 'no',
-      render: text => <a>{text}</a>,
+      render: text => <span>{text}</span>,
     },
     {
       title: '发生地点',
@@ -138,14 +138,14 @@ export default function AuditClaim() {
         <Space size="middle">
           {
             record.status == 0 && 
-            <Button type="primary"
+            <Button type="primary" key={record.guaranteeNo}
           onClick={()=>Status(record.guaranteeNo, localStorage.getItem("seller"), 1)}
           // disabled={record.status == 1? true : false}
          >通过</Button>
           }
           {
             record.status == 0 && 
-            <Button type="primary"  danger
+            <Button type="primary"  danger  key={record.guaranteeNo}
           onClick={()=>Status(record.guaranteeNo, localStorage.getItem("seller"), 2)}
           // disabled={record.status == 2 ? true : false}
          >拒绝</Button>

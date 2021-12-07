@@ -22,10 +22,12 @@ import {
 import { HomeWrapper } from "./style";
 
 import { Link, NavLink } from "react-router-dom";
-import { queryAllByType, queryAllGoods } from "../../services/goods";
+import { findAll, queryAllByType } from "../../services/goods";
 import { JYFooter } from "../../components/footer";
 import { queryAll } from "../../services/topline";
 import { queryAllCarousel } from "../../services/carousel";
+import thunder from  '@/assets/img/thunder2.svg'
+
 
 const { Panel } = Collapse;
 
@@ -63,10 +65,11 @@ export default function Home() {
   }, []);
 
   function getAllGoods() {
-    queryAllGoods().then((res) => {
+    findAll(1,8).then((res) => {
       console.log(res);
-      setData(res.data);
+      setData(res.list);
     });
+
   }
 
   function getAllByType(type) {
@@ -241,8 +244,16 @@ export default function Home() {
                                 <span>{item.sellingPrice}</span>
                                 <span className="style-text">起</span>
                                 <span style={{marginLeft:"10px"}}>销量 {item.total}</span>
-                                {index < 3 ? <HeartTwoTone twoToneColor="#eb2f96" style={{marginLeft:"10px"}}/>:null}
-                               
+                                {index < 3 ? 
+                                <React.Fragment>
+                               <img src={thunder} style={{width:"16px",height:"16px"}}></img>
+                               <img src={thunder} style={{width:"16px",height:"16px"}}></img>
+                               {/* <img src={thunder} style={{width:"16px",height:"16px"}}></img> */}
+
+                                </React.Fragment>
+                                
+                                
+                                :null}
                               </div>
 
                               
@@ -299,8 +310,16 @@ export default function Home() {
                                 <span>{item.sellingPrice}</span>
                                 <span className="style-text">起</span>
                                 <span style={{marginLeft:"10px"}}>销量 {item.total}</span>
-                                {index < 3 ? <HeartTwoTone twoToneColor="#eb2f96" style={{marginLeft:"10px"}}/>:null}
-                               
+                                {index < 3 ? 
+                                <React.Fragment>
+                               <img src={thunder} style={{width:"16px",height:"16px"}}></img>
+                               <img src={thunder} style={{width:"16px",height:"16px"}}></img>
+                               {/* <img src={thunder} style={{width:"16px",height:"16px"}}></img> */}
+
+                                </React.Fragment>
+                                
+                                
+                                :null}
                               </div>
 
                               
@@ -356,8 +375,16 @@ export default function Home() {
                                 <span>{item.sellingPrice}</span>
                                 <span className="style-text">起</span>
                                 <span style={{marginLeft:"10px"}}>销量 {item.total}</span>
-                                {index < 3 ? <HeartTwoTone twoToneColor="#eb2f96" style={{marginLeft:"10px"}}/>:null}
-                               
+                                {index < 3 ? 
+                                <React.Fragment>
+                               <img src={thunder} style={{width:"16px",height:"16px"}}></img>
+                               <img src={thunder} style={{width:"16px",height:"16px"}}></img>
+                               {/* <img src={thunder} style={{width:"16px",height:"16px"}}></img> */}
+
+                                </React.Fragment>
+                                
+                                
+                                :null}
                               </div>
 
                               
@@ -412,8 +439,16 @@ export default function Home() {
                                 <span>{item.sellingPrice}</span>
                                 <span className="style-text">起</span>
                                 <span style={{marginLeft:"10px"}}>销量 {item.total}</span>
-                                {index < 3 ? <HeartTwoTone twoToneColor="#eb2f96" style={{marginLeft:"10px"}}/>:null}
-                               
+                                {index < 3 ? 
+                                <React.Fragment>
+                               <img src={thunder} style={{width:"16px",height:"16px"}}></img>
+                               <img src={thunder} style={{width:"16px",height:"16px"}}></img>
+                               {/* <img src={thunder} style={{width:"16px",height:"16px"}}></img> */}
+
+                                </React.Fragment>
+                                
+                                
+                                :null}
                               </div>
 
                               

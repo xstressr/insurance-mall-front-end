@@ -26,7 +26,9 @@ const status = {
 export default function SearchProducts() {
   const [data, setData] = useState([])
   const [text, setText] = useState();
+  const [pagination, setPagination] = useState({current:1, pageSize: 5})
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const columns = [
     
@@ -165,16 +167,37 @@ export default function SearchProducts() {
 
   useEffect(() => {
     let name = localStorage.getItem("seller")
-    queryGoodsByName(name).then(res=>{
-      // console.log(res);
-      setData(res.data)
+    setLoading(true)
+
+    queryGoodsByName(name,1,5).then(res=>{
+      console.log(res);
+      setLoading(false)
+      setData(res.data.list)
+      setPagination({...pagination, total:res.data.total})
     })
   }, [])
+
+  function refreshData(pagination) {
+
+    setLoading(true)
+    let name = localStorage.getItem("seller")
+    const {current,pageSize} = pagination;
+    // console.log(pagination)
+    console.log(current);
+    console.log(pageSize);
+    queryGoodsByName(name,current,pageSize).then(res=>{
+      console.log(res);
+      setLoading(false)
+      setData(res.data.list)
+      setPagination({current: current, total:res.data.total})
+    })
+  }
 
   return (
     <div>
      <h3 style={{marginBottom:"30px"}}>产品查询</h3>
-     <Table columns={columns} dataSource={data} scroll={{ x: 1000 }}/>
+     <Table columns={columns} dataSource={data} scroll={{ x: 1000 }} loading={loading}
+     pagination={pagination} onChange={(pagination)=>refreshData(pagination)}/>
      <Modal
         title="描述详情"
         visible={isModalVisible}

@@ -19,8 +19,8 @@ export default function SearchClaim() {
 
   const columns = [
     {
-      title: "保单号",
-      dataIndex: "guaranteeNo",
+      title: "报案号",
+      dataIndex: "claimNo",
       key: "no",
       render: (text) => <a>{text}</a>,
     },

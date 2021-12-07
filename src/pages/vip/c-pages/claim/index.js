@@ -14,13 +14,16 @@ import {
   DatePicker,
 } from "antd";
 import { insertClaim } from "../../../../services/claim";
+import { queryByName } from "../../../../services/slip";
 
 const { TextArea } = Input;
+const { Option } = Select;
 
 export default function Claim() {
   const [form] = Form.useForm();
 
   const [loginName, setLoginName] = useState("");
+  const [data, setData] = useState([])
 
   const formItemLayout = {
     labelCol: {
@@ -46,10 +49,19 @@ export default function Claim() {
     },
   };
 
+
   useEffect(() => {
     setLoginName(localStorage.getItem("vip"));
-    console.log(loginName);
-  });
+    // console.log(loginName);
+    const loginName = localStorage.getItem("vip");
+    queryByName(loginName).then((res)=>{
+      console.log(res)
+      setData(res.data)
+    })
+  },[]);
+
+  
+
 
   function submitClaim() {
     console.log("test");
@@ -64,13 +76,12 @@ export default function Claim() {
       locationAccident: location,
       accidentDesc: desc,
       submitter: localStorage.getItem("vip"),
-      money: money
+      money: money,
     };
     insertClaim(claimInfo).then((res) => {
       // console.log(res);
-      if(res.resultCode)
-      {
-        message.success("报案成功")
+      if (res.resultCode) {
+        message.success("报案成功");
       }
     });
   }
@@ -91,8 +102,29 @@ export default function Claim() {
             ]}
             hasFeedback
           >
-            <Input />
+            {/* <Input /> */}
+            <Select
+              showSearch
+              style={{ width: 350 }}
+              placeholder="Select a person"
+              optionFilterProp="children"
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              {data.map((item,index)=>{
+                return <Option value={item.guaranteeNo}>{item.guaranteeNo+" "+item.product}</Option>
+              })}
+              {/* <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="tom">Tom</Option> */}
+            </Select>
           </Form.Item>
+          <Col push="8">
+            <span style={{ marginLeft: "10px", fontSize: "10px" }}>
+              事故发生的时间
+            </span>
+            </Col>
           <Form.Item
             name="time"
             label="报案时间"
@@ -105,16 +137,19 @@ export default function Claim() {
             hasFeedback
           >
             <DatePicker />
+            
           </Form.Item>
+            
+          
           <Form.Item
-          label="报案金额"
-          name="claimMoney"
-          hasFeedback
-          rules={[{ required: true }]}
-        >
-          <Input prefix="￥" suffix="RMB" />
-          {/* <InputNumber addonAfter={<Option value="CNY">¥</Option>} /> */}
-        </Form.Item>
+            label="理赔金额"
+            name="claimMoney"
+            hasFeedback
+            rules={[{ required: true }]}
+          >
+            <Input prefix="￥" suffix="RMB" />
+            {/* <InputNumber addonAfter={<Option value="CNY">¥</Option>} /> */}
+          </Form.Item>
           <Form.Item
             name="location"
             label="报案地点"

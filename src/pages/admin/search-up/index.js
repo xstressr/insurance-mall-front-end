@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Table, Tag, Space, Button, Modal } from 'antd';
-import { queryAllGoods, changeStatus } from '../../../services/goods';
+import { findAll, changeStatus } from '../../../services/goods';
 
 const category = {
   1: "重疾险",
@@ -31,9 +31,9 @@ export default function SearchUp() {
   }, [])
 
   function refreshGood() {
-    queryAllGoods().then(res=>{
+    findAll(1,5).then(res=>{
       console.log(res);
-      setData(res.data)
+      setData(res.data.list)
     })
   }
 

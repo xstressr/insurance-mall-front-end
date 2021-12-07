@@ -1,21 +1,23 @@
 import request from './request'
 
-export function queryGoodsByName(loginName) {
+export function queryGoodsByName(loginName,pageNum,pageSize) {
   return request.get(
     "/api/goods/getAllByloginName",
     {
       params: {
-        loginName: loginName
+        loginName: loginName,
+        pageNum:pageNum,
+        pageSize:pageSize
       }
     }
   )
 }
 
-export function queryAllGoods() {
-  return request.get(
-    "/api/goods/getAll"
-  )
-}
+// export function queryAllGoods() {
+//   return request.get(
+//     "/api/goods/getAll"
+//   )
+// }
 
 export function queryGoodsAbbreByName(loginName) {
   return request.get(
