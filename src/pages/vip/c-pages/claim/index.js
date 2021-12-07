@@ -54,9 +54,12 @@ export default function Claim() {
     setLoginName(localStorage.getItem("vip"));
     // console.log(loginName);
     const loginName = localStorage.getItem("vip");
-    queryByName(loginName).then((res)=>{
+    queryByName(loginName,1,100).then((res)=>{
       console.log(res)
-      setData(res.data)
+      if(res.data != null) {
+        setData(res.data.list)
+
+      }
     })
   },[]);
 

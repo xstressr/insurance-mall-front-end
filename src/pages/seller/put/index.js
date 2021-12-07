@@ -227,6 +227,34 @@ export default function Put() {
             <Input />
           </Form.Item>
         </Form.Item>
+        <Form.Item label="职业等级区间" required style={{ marginBottom: 0 }}>
+          <Form.Item
+            validateStatus="error"
+            help="请输入最小支持职业等级"
+            name="minLevel"
+            style={{ display: "inline-block", width: "100px" }}
+          >
+            <Input />
+          </Form.Item>
+          <span
+            style={{
+              display: "inline-block",
+              width: "24px",
+              lineHeight: "32px",
+              textAlign: "center",
+            }}
+          >
+            -
+          </span>
+          <Form.Item
+            validateStatus="error"
+            help="请输入最大支持职业等级"
+            name="maxLevel"
+            style={{ display: "inline-block", width: "100px" }}
+          >
+            <Input />
+          </Form.Item>
+        </Form.Item>
         <Form.Item
           name="upload"
           label="上传产品页图片"

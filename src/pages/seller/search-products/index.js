@@ -172,8 +172,10 @@ export default function SearchProducts() {
     queryGoodsByName(name,1,5).then(res=>{
       console.log(res);
       setLoading(false)
+      if(res.data != null){
       setData(res.data.list)
       setPagination({...pagination, total:res.data.total})
+      }
     })
   }, [])
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import { Table, Tag, Space, Button, Modal } from 'antd';
-import { findAll, changeStatus } from '../../../services/goods';
+import { Table, Tag, Space, Button, Modal, message } from 'antd';
+import {  changeStatus, findAllNoUp } from '../../../services/goods';
 
 const category = {
   1: "重疾险",
@@ -24,16 +24,32 @@ export default function Audit() {
   const [data, setData] = useState([])
   const [text, setText] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pagination, setPagination] = useState({current:1, pageSize: 5})
 
 
   useEffect(() => {
-    refreshGood()
+    findAllNoUp(1,5).then(res=>{
+      console.log(res);
+      setData(res.list)
+      setPagination({...pagination, total:res.total})
+    })
   }, [])
 
-  function refreshGood() {
-    findAll(1,5).then(res=>{
+  
+
+  function refreshData(pagination) {
+
+
+    // let name = localStorage.getItem("seller")
+    const {current,pageSize} = pagination;
+    console.log(pagination)
+    console.log(current);
+    console.log(pageSize);
+    findAllNoUp(current,pageSize).then(res=>{
       console.log(res);
-      setData(res.data.list)
+
+      setData(res.list)
+      setPagination({current: current, total:res.total})
     })
   }
 
@@ -141,21 +157,25 @@ export default function Audit() {
       key: 'action',
       fixed: 'right',
       width: 130,
-      render: (text, record) => (
+      render: (text, record, index) => (
         <Space size="middle">
           <Button type="primary"  
           disabled={record.goodsSellStatus == 1 ? true : false}
-          onClick={()=>onProduct(record.goodsName)}>同意上架</Button>
+          onClick={()=>onProduct(record.goodsName,index)}>同意上架</Button>
         </Space>
       ),
     },
   ];
 
-  function onProduct(goodsName) {
+  function onProduct(goodsName, index) {
     changeStatus(goodsName, 1).then(res => {
-      console.log(res)
+      console.log(res);
+      message.success("上架成功");
     })
-    refreshGood();
+    data.splice(index,1)
+    const arr2 = [...data]
+    setData(arr2)
+    
   }
 
   const showModal = (text) => {
@@ -174,7 +194,8 @@ export default function Audit() {
   return (
     <div>
      <h3 style={{marginBottom:"30px"}}>平台上架产品</h3>
-     <Table columns={columns} dataSource={data}  scroll={{ x: 1300 }}/>
+     <Table columns={columns} dataSource={data}  scroll={{ x: 1300 }} 
+     pagination={pagination} onChange={(pagination)=>refreshData(pagination)}/>
      <Modal
         title="描述详情"
         visible={isModalVisible}

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Table, Tag, Space, Button, Modal } from 'antd';
+import { Table, Tag, Space, Button, Modal, message } from 'antd';
 import { queryClaimsByCompanyName, changeStatus } from '../../../services/claim';
 
 // import { queryByName } from '../../../../services/slip';
@@ -67,10 +67,9 @@ export default function AuditClaim() {
   const [loginName, setLoginName] = useState("");
   const [slipList, setSlipList] = useState();
   const [text, setText] = useState();
-
   const [data, setData] = useState([])
-
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pagination, setPagination] = useState({current:1, pageSize: 5})
 
 
   const columns = [
@@ -138,15 +137,15 @@ export default function AuditClaim() {
         <Space size="middle">
           {
             record.status == 0 && 
-            <Button type="primary" key={record.guaranteeNo}
-          onClick={()=>Status(record.guaranteeNo, localStorage.getItem("seller"), 1)}
+            <Button type="primary" key={record.claimNo}
+          onClick={()=>Status(record.claimNo, localStorage.getItem("seller"), 1)}
           // disabled={record.status == 1? true : false}
          >通过</Button>
           }
           {
             record.status == 0 && 
-            <Button type="primary"  danger  key={record.guaranteeNo}
-          onClick={()=>Status(record.guaranteeNo, localStorage.getItem("seller"), 2)}
+            <Button type="primary"  danger  key={record.claimNo}
+          onClick={()=>Status(record.claimNo, localStorage.getItem("seller"), 2)}
           // disabled={record.status == 2 ? true : false}
          >拒绝</Button>
           }
@@ -172,33 +171,58 @@ export default function AuditClaim() {
   
   useEffect(() => {
     
-    refreshData()
+    let name = localStorage.getItem("seller")
+    queryClaimsByCompanyName(name,1,5).then(res=>{
+      console.log(res);
+      if(res.data != null) {
+      setData(res.data.list)
+      setPagination({...pagination, total:res.data.total})
+      }
+    })
   }, [])
 
-  function refreshData() {
-    const company = localStorage.getItem("seller")
+  function refreshData(pagination) {
 
-    queryClaimsByCompanyName(company).then(res=>{
-      console.log(res)
-      setData(res.data)
+
+    let name = localStorage.getItem("seller")
+    const {current,pageSize} = pagination;
+    queryClaimsByCompanyName(name,current,pageSize).then(res=>{
+      console.log(res);
+
+      setData(res.data.list)
+      setPagination({current: current, total:res.data.total})
     })
-
   }
 
-  function Status(guaranteeNo, resolver, status) {
+  function Status(claimNo, resolver, status) {
     let params = {
-      guaranteeNo: guaranteeNo,
+      claimNo: claimNo,
       resolver: resolver,
       status: status
     }
-    changeStatus(params).then(res=>{console.log(res)})
-    refreshData()
+    changeStatus(params).then(res=>{
+      console.log(res);
+      message.success("操作成功")
+      
+    })
+    refresh()
   }
 
+  function refresh(){
+    let name = localStorage.getItem("seller")
+    const {current,pageSize} = pagination;
+    queryClaimsByCompanyName(name,current,pageSize).then(res=>{
+      console.log(res);
+
+      setData(res.data.list)
+      // setPagination({current: current, total:res.data.total})
+    })
+  }
   return (
     <div>
      <h3 style={{marginBottom:"30px"}}>理赔审计</h3>
-     <Table columns={columns} dataSource={data} />
+     <Table columns={columns} dataSource={data} 
+     pagination={pagination} onChange={(pagination)=>refreshData(pagination)}/>
      <Modal
         title="描述详情"
         visible={isModalVisible}

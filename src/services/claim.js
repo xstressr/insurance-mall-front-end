@@ -1,22 +1,26 @@
 import request from './request'
 
-export function queryClaimsByName(loginName) {
+export function queryClaimsByName(loginName,pageNum,pageSize) {
   return request.get(
     "/api/claim/getAllByloginName",
     {
       params: {
-        loginName: loginName
+        loginName: loginName,
+        pageNum: pageNum,
+        pageSize: pageSize
       }
     }
   )
 }
 
-export function queryClaimsByCompanyName(companyName) {
+export function queryClaimsByCompanyName(companyName,pageNum,pageSize) {
   return request.get(
     "/api/claim/getAllByCompanyName",
     {
       params: {
-        companyName: companyName
+        companyName: companyName,
+        pageNum: pageNum,
+        pageSize: pageSize
       }
     }
   )

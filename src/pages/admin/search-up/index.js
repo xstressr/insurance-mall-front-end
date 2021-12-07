@@ -24,18 +24,33 @@ export default function SearchUp() {
   const [data, setData] = useState([])
   const [text, setText] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pagination, setPagination] = useState({current:1, pageSize: 5})
 
 
   useEffect(() => {
-    refreshGood()
-  }, [])
-
-  function refreshGood() {
     findAll(1,5).then(res=>{
       console.log(res);
-      setData(res.data.list)
+      setData(res.list)
+      setPagination({...pagination, total:res.total})
+    })
+  }, [])
+
+  function refreshData(pagination) {
+
+
+
+    const {current,pageSize} = pagination;
+    // console.log(pagination)
+    console.log(current);
+    console.log(pageSize);
+    findAll(current,pageSize).then(res=>{
+      console.log(res);
+      setData(res.list)
+      setPagination({current: current, total:res.total})
     })
   }
+
+
 
   const columns = [
     {
@@ -136,27 +151,26 @@ export default function SearchUp() {
         )
       }
     },
-    {
-      title: 'Action',
-      key: 'action',
-      fixed: 'right',
-      width: 130,
-      render: (text, record) => (
-        <Space size="middle">
-          <Button type="primary"  
-          disabled={record.goodsSellStatus == 1 ? true : false}
-          onClick={()=>onProduct(record.goodsName)}>同意上架</Button>
-        </Space>
-      ),
-    },
+    // {
+    //   title: 'Action',
+    //   key: 'action',
+    //   fixed: 'right',
+    //   width: 130,
+    //   render: (text, record) => (
+    //     <Space size="middle">
+    //       <Button type="primary"  
+    //       disabled={record.goodsSellStatus == 1 ? true : false}
+    //       onClick={()=>onProduct(record.goodsName)}>同意上架</Button>
+    //     </Space>
+    //   ),
+    // },
   ];
 
-  function onProduct(goodsName) {
-    changeStatus(goodsName, 1).then(res => {
-      console.log(res)
-    })
-    refreshGood();
-  }
+  // function onProduct(goodsName) {
+  //   changeStatus(goodsName, 1).then(res => {
+  //     console.log(res)
+  //   })
+  // }
 
   const showModal = (text) => {
     setText(text);
@@ -174,14 +188,15 @@ export default function SearchUp() {
   return (
     <div>
      <h3 style={{marginBottom:"30px"}}>平台上架产品</h3>
-     <Table columns={columns} dataSource={data}  scroll={{ x: 1300 }}/>
+     <Table columns={columns} dataSource={data}  scroll={{ x: 1300 }}
+     pagination={pagination} onChange={(pagination)=>refreshData(pagination)}/>
      <Modal
         title="描述详情"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <pre>{text}</pre>
+        <p>{text}</p>
       </Modal>
     </div>
   )

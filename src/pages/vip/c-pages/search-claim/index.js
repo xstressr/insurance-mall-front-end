@@ -16,6 +16,7 @@ export default function SearchClaim() {
   const [data, setData] = useState([]);
   const [text, setText] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pagination, setPagination] = useState({current:1, pageSize: 5})
 
   const columns = [
     {
@@ -90,16 +91,35 @@ export default function SearchClaim() {
 
   useEffect(() => {
     const loginName = localStorage.getItem("vip");
-    queryClaimsByName(loginName).then((res) => {
+    queryClaimsByName(loginName,1,5).then((res) => {
       console.log(res);
-      setData(res.data);
+      if(res.data != null) {
+      setData(res.data.list);
+      setPagination({...pagination, total:res.data.total})
+      }
     });
   }, []);
+
+  function refreshData(pagination) {
+
+
+    let name = localStorage.getItem("vip")
+    const {current,pageSize} = pagination;
+
+
+
+    queryClaimsByName(name,current,pageSize).then(res=>{
+      console.log(res);
+
+      setData(res.data.list)
+      setPagination({current: current, total:res.data.total})
+    })
+  }
 
   return (
     <div>
       <h3 style={{ marginBottom: "30px" }}>查询理赔状态</h3>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data} pagination={pagination} onChange={(pagination)=>refreshData(pagination)}/>
       <Modal
         title="描述详情"
         visible={isModalVisible}
