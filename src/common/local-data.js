@@ -31,6 +31,10 @@ export const sellerMenu = [
     link: "/seller/off"
   },
   {
+    title: "保单查询",
+    link: "/seller/searchGuarant"
+  },
+  {
     title: "理赔审计",
     link: "/seller/auditClaim"
   },

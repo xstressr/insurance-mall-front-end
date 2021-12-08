@@ -67,7 +67,10 @@ export default function Home() {
   function getAllGoods() {
     findAll(1,8).then((res) => {
       console.log(res);
-      setData(res.list);
+      if(res.list != null) {
+        setData(res.list);
+
+      }
     });
 
   }
@@ -76,13 +79,22 @@ export default function Home() {
     queryAllByType(type, 1, 8).then((res) => {
       switch (type) {
         case 3:
-          setAccident(res.data.list);
+          if(res.data != null) {
+            setAccident(res.data.list);
+
+          }
           break;
         case 5:
+          if(res.data != null) {
+
           setTravel(res.data.list);
+          }
           break;
         case 8:
+          if(res.data != null) {
+
           setWealth(res.data.list);
+          }
           break;
         default:
           break;
@@ -95,14 +107,20 @@ export default function Home() {
   function getAllTopLine() {
     queryAll().then((res) => {
       console.log(res);
-      setTopline(res.data);
+      if(res.data != null) {
+        setTopline(res.data);
+
+      }
     });
   }
 
   function getCarousel() {
     queryAllCarousel().then((res) => {
       console.log(res);
-      setCarousel(res.data);
+      if (res.data != null) {
+        setCarousel(res.data);
+
+      }
     });
   }
 
@@ -542,7 +560,7 @@ export default function Home() {
 
           <Collapse
             bordered={false}
-            defaultActiveKey={["0"]}
+            // defaultActiveKey={["0"]}
             onChange={callback}
           >
             {topline.map((item, index) => {

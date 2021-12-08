@@ -30,7 +30,7 @@ export default function CommonQuestions() {
             </dt>
             <dd className="product-faq-reply">
               <i className="ico">A</i>
-              您通过复星联合健康保险全国客服热线4006-11-7777或登录复星联合健康
+              您通过全国客服热线13381501606
               <strong>
                 <a href="https://www.fosun-uhi.com/" target="_blank">
                   官网

@@ -10,34 +10,30 @@ export default function ProductNavi() {
             <div className="claims-service-box">
               <ul className="claims-service-tab-menu tac clearfix">
                 <li className="claims-service-tab-item active">
-                  <i className="iconfont"></i>
+
                   <p className="pt20">1、报案</p>
                 </li>
 
-                <li className="claims-service-tab-item claims-service-tab-separator">
-                  <i className="iconfont"></i>
-                </li>
+                
 
                 <li className="claims-service-tab-item ">
-                  <i className="iconfont"></i>
+
                   <p className="pt20">2、提交理赔资料</p>
                 </li>
 
                 <li className="claims-service-tab-item claims-service-tab-separator">
-                  <i className="iconfont"></i>
+
                 </li>
 
                 <li className="claims-service-tab-item ">
-                  <i className="iconfont"></i>
+
                   <p className="pt20">3、理赔资料审核</p>
                 </li>
 
-                <li className="claims-service-tab-item claims-service-tab-separator">
-                  <i className="iconfont"></i>
-                </li>
+
 
                 <li className="claims-service-tab-item ">
-                  <i className="iconfont"></i>
+
                   <p className="pt20">4、领取赔款</p>
                 </li>
               </ul>
@@ -46,8 +42,8 @@ export default function ProductNavi() {
                 <div className="claims-service-tab-pane ">
                   您可通过如下方式报案:
                   <br />{" "}
-                  ①微信报案:您可通过微信公众号“慧择保险网”-“小马理赔”在线报案
-                  <br /> ②电话报案:拨打电话4006-366-366
+                  ①微信报案:您可通过微信公众号在线报案
+                  <br /> ②电话报案:拨打电话13381501606
                   <br />
                 </div>
 
@@ -76,7 +72,7 @@ export default function ProductNavi() {
             <h3 className="f14 pb20 pt20 mb20 fc6 fb bor-bottom">理赔须知</h3>
 
             <div className="f12 lh20 clearfix">
-              1、发生保险事故,请联系慧择报案，可拨打慧择网全国服务电话4006-366-366，或通过“慧择保险网”微信公众号在线报案。
+              1、发生保险事故,请联系慧择报案，可拨打全国服务电话13381501606，或通过微信公众号在线报案。
               <br /> <br />{" "}
               2、报案时，请您提供保单号(或有效证件号码)、出险人姓名、出险时间、出险地点、出险原因、治疗就医情况等基本信息。
               <br /> <br />{" "}

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Layout, Image, Button, Menu, Descriptions, Pagination } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  InsuranceOutlined,
+  DashboardOutlined,
+} from "@ant-design/icons";
 import { JYFooter } from "../../../components/footer";
 import { findAll } from "../../../services/goods";
 import { ProductsWrapper } from "./style";
@@ -22,11 +26,11 @@ export default function Products() {
   }, []);
 
   function onChange(page, pageSize) {
-    findAll(page, pageSize).then(res=> {
-      console.log(res)
+    findAll(page, pageSize).then((res) => {
+      console.log(res);
       setData(res.list);
-    })
-    console.log("onChange")
+    });
+    console.log("onChange");
   }
 
   return (
@@ -45,18 +49,19 @@ export default function Products() {
             <div className="products-list">
               {data.map((item) => {
                 return (
-                  <div className="product" >
+                  <div className="product">
                     <div className="left-box">
                       <div className="img-box">
-                        <img
-                          src={item.goodsCarousel}
-                          alt=""
-                        />
+                        <img src={item.goodsCarousel} alt="" />
                         <div className="style_cover">{item.goodsName}</div>
                       </div>
                       <div className="info-box">
                         <h3 className="style-row1">
-                          <NavLink to={`/app/product?productCode=${item.goodsName}`}>{item.goodsName}</NavLink>
+                          <NavLink
+                            to={`/app/product?productCode=${item.goodsName}`}
+                          >
+                            {item.goodsName}
+                          </NavLink>
                         </h3>
                         <div
                           className="style-row2"
@@ -70,22 +75,28 @@ export default function Products() {
                           <div className="style-item">
                             <UserOutlined style={{ marginRight: "14px" }} />
                             <span className="style-label">投保年龄</span>
-                            <span className="style-value">{item.minAge+"周岁-"+item.maxAge+"周岁"}</span>
+                            <span className="style-value">
+                              {item.minAge + "周岁-" + item.maxAge + "周岁"}
+                            </span>
                           </div>
                           <div className="style-item">
-                            <UserOutlined style={{ marginRight: "14px" }} />
+                            <DashboardOutlined
+                              style={{ marginRight: "14px" }}
+                            />
+
                             <span className="style-label">保障期限</span>
                             <span className="style-value">{item.deadline}</span>
                           </div>
+
                           <div className="style-item">
-                            <UserOutlined style={{ marginRight: "14px" }} />
-                            <span className="style-label">等待期</span>
-                            <span className="style-value">0</span>
-                          </div>
-                          <div className="style-item">
-                            <UserOutlined style={{ marginRight: "14px" }} />
+                            <InsuranceOutlined
+                              style={{ marginRight: "14px" }}
+                            />
+
                             <span className="style-label">职业类别</span>
-                            <span className="style-value">1-3类</span>
+                            <span className="style-value">
+                              {item.minLevel + "-" + item.maxLevel + "类"}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -111,7 +122,12 @@ export default function Products() {
               })}
             </div>
             <div className="pagination">
-              <Pagination defaultCurrent={1} total={total} pageSize={5} onChange={onChange}/>
+              <Pagination
+                defaultCurrent={1}
+                total={total}
+                pageSize={5}
+                onChange={onChange}
+              />
             </div>
           </Content>
           <JYFooter></JYFooter>

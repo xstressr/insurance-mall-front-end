@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Layout, Image, Button, Menu, Descriptions, Pagination } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined,InsuranceOutlined,DashboardOutlined } from "@ant-design/icons";
 import { JYFooter } from "../../../components/footer";
 import { findAll, queryAllByType } from "../../../services/goods";
 import { ProductsWrapper } from "./style";
@@ -25,17 +25,17 @@ export default function ProductsType(props) {
       setTotal(res.data.total)
       setData(res.data.list)
     })
-    // findAll(1, 5).then((res) => {
-    //   console.log(res);
-    //   setTotal(res.total);
-    //   setData(res.list);
-    // });
+
   }, []);
 
   function onChange(page, pageSize) {
-    findAll(page, pageSize).then(res=> {
+    const type = new URLSearchParams(props.location.search).get(
+      "type"
+    );
+    queryAllByType(type,page, pageSize).then(res=> {
       console.log(res)
-      setData(res.list);
+      setData(res.data.list)
+
     })
     console.log("onChange")
   }
@@ -78,25 +78,31 @@ export default function ProductsType(props) {
                         {/* //TODO: 金色小标标先不写 */}
                         <div className="style-row3"></div>
                         <div className="style-row4">
-                          <div className="style-item">
+                        <div className="style-item">
                             <UserOutlined style={{ marginRight: "14px" }} />
                             <span className="style-label">投保年龄</span>
-                            <span className="style-value">{item.minAge+"周岁-"+item.maxAge+"周岁"}</span>
+                            <span className="style-value">
+                              {item.minAge + "周岁-" + item.maxAge + "周岁"}
+                            </span>
                           </div>
                           <div className="style-item">
-                            <UserOutlined style={{ marginRight: "14px" }} />
+                            <DashboardOutlined
+                              style={{ marginRight: "14px" }}
+                            />
+
                             <span className="style-label">保障期限</span>
                             <span className="style-value">{item.deadline}</span>
                           </div>
+
                           <div className="style-item">
-                            <UserOutlined style={{ marginRight: "14px" }} />
-                            <span className="style-label">等待期</span>
-                            <span className="style-value">0</span>
-                          </div>
-                          <div className="style-item">
-                            <UserOutlined style={{ marginRight: "14px" }} />
+                            <InsuranceOutlined
+                              style={{ marginRight: "14px" }}
+                            />
+
                             <span className="style-label">职业类别</span>
-                            <span className="style-value">1-3类</span>
+                            <span className="style-value">
+                              {item.minLevel + "-" + item.maxLevel + "类"}
+                            </span>
                           </div>
                         </div>
                       </div>

@@ -25,6 +25,7 @@ import Knows from "../pages/home-page/knows";
 import ProductsType from "../pages/home-page/products-type";
 import SearchUp from "../pages/admin/search-up";
 import Audit from "../pages/admin/audit";
+import SearchGuarant from "../pages/seller/search-guarant";
 
 
 const routes = [
@@ -112,6 +113,10 @@ const routes = [
       {
         path: "/seller/off",
         component: Off
+      },
+      {
+        path: "/seller/searchGuarant",
+        component: SearchGuarant
       },
       {
         path: "/seller/auditClaim",

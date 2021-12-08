@@ -58,6 +58,8 @@ export default function Put() {
     let period = form.getFieldValue("period");
     let minAge = form.getFieldValue("minAge");
     let maxAge = form.getFieldValue("maxAge");
+    let minLevel = form.getFieldValue("minAge");
+    let maxLevel = form.getFieldValue("maxAge");
     let imgUrl;
     let imgUrl2;
     if (form.getFieldValue("upload")) {
@@ -67,12 +69,6 @@ export default function Put() {
     if (form.getFieldValue("uploadAbbre")) {
       imgUrl2 = form.getFieldValue("uploadAbbre")[0].response.data;
     }
-
-    console.log(imgUrl2);
-
-    console.log(minAge);
-    console.log(maxAge);
-
 
     let goodInfo = {
       goodsName: goodname,
@@ -87,6 +83,9 @@ export default function Put() {
       createUser: localStorage.getItem("seller"),
       minAge: minAge,
       maxAge: maxAge,
+      minLevel: minLevel,
+      maxLevel: maxLevel,
+
       goodsCarousel: imgUrl2,
     };
     insertGoods(goodInfo).then((res) => {
@@ -192,7 +191,7 @@ export default function Put() {
             <Option value="2">医疗险</Option>
             <Option value="3">意外险</Option>
             {/* <Option value="4">财富险</Option> */}
-            <Option value="5">旅游线</Option>
+            <Option value="5">旅游险</Option>
             {/* <Option value="6">定期寿险</Option> */}
             <Option value="7">责任险</Option>
             <Option value="8">家财险</Option>
