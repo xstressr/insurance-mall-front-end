@@ -210,8 +210,9 @@ export default function AuditClaim() {
 
   function refresh(){
     let name = localStorage.getItem("seller")
-    const {current,pageSize} = pagination;
-    queryClaimsByCompanyName(name,current,pageSize).then(res=>{
+    const {current} = pagination;
+    // console.log(pageSize)
+    queryClaimsByCompanyName(name,current,5).then(res=>{
       console.log(res);
 
       setData(res.data.list)
