@@ -485,7 +485,7 @@ export default function Home() {
             <div className="content-top-right-title">
               <div className="pic">
                 <img
-                  src="//r3gvhifgy.hd-bkt.clouddn.com/313766726f0f4883aee53722952c916b.jpeg"
+                  src="//r6cyoe89d.hd-bkt.clouddn.com/7be530ef30274c7dbaf0b6f8c9216287.jpg"
                   alt="头像"
                   style={{ width: "48px", height: "48px" }}
                 />
